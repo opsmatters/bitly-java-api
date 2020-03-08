@@ -36,7 +36,8 @@ public class Bitly
     private HttpContext httpContext;
 
     /**
-     * Default constructor.
+     * Constructor that takes an access token.
+     * @param accessToken The access token used to authenticate requests
      */
     public Bitly(String accessToken)
     {

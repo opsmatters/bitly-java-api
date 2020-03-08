@@ -47,6 +47,7 @@ public class BitlinksService extends BitlyV4Service
      * Shortens the given long url.
      * @param longUrl The long url to be shortened
      * @return The response object
+     * @throws IOException if there is a communication error.
      */
     public Optional<ShortenResponse> shorten(String longUrl) throws IOException
     {
@@ -57,6 +58,7 @@ public class BitlinksService extends BitlyV4Service
      * Shortens the given long url.
      * @param request The request containing the long url to be shortened
      * @return The response object
+     * @throws IOException if there is a communication error.
      */
     public Optional<ShortenResponse> shorten(ShortenRequest request) throws IOException
     {
@@ -67,6 +69,7 @@ public class BitlinksService extends BitlyV4Service
      * Returns the long url for the given bitlink id.
      * @param id The id of the bitlink to be expanded
      * @return The response object
+     * @throws IOException if there is a communication error.
      */
     public Optional<ExpandResponse> expand(String id) throws IOException
     {
@@ -77,6 +80,7 @@ public class BitlinksService extends BitlyV4Service
      * Returns the long url for the given bitlink id.
      * @param request The request containing the id of the bitlink to be expanded
      * @return The response object
+     * @throws IOException if there is a communication error.
      */
     public Optional<ExpandResponse> expand(ExpandRequest request) throws IOException
     {

@@ -113,6 +113,8 @@ public class HttpContext
      * @param partialUrl The partial URL to build
      * @param returnType The expected return type
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public <T> Optional<T> GET(String partialUrl, Type returnType) throws IOException, URISyntaxException
     {    
@@ -128,6 +130,8 @@ public class HttpContext
      * @param headers A set of headers to add to the request
      * @param queryParams A set of query parameters to add to the request
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public <T> Optional<T> GET(String partialUrl, Map<String,String> headers, List<String> queryParams, Type returnType)
         throws IOException, URISyntaxException
@@ -141,6 +145,7 @@ public class HttpContext
      * @param partialUrl The partial URL to build
      * @param payload The object to use for the POST
      * @return The response to the POST
+     * @throws IOException if there is a communication error.
      */
     public Optional<HttpResponse> POST(String partialUrl, Object payload) throws IOException
     {    
@@ -154,6 +159,7 @@ public class HttpContext
      * @param payload The object to use for the POST
      * @param headers A set of headers to add to the request
      * @return The response to the POST
+     * @throws IOException if there is a communication error.
      */
     public Optional<HttpResponse> POST(String partialUrl, Object payload, Map<String,String> headers) throws IOException
     {
@@ -168,6 +174,7 @@ public class HttpContext
      * @param payload The object to use for the POST
      * @param returnType The expected return type
      * @return The return type
+     * @throws IOException if there is a communication error.
      */
     public <T> Optional<T> POST(String partialUrl, Object payload, Type returnType) throws IOException
     {
@@ -183,6 +190,7 @@ public class HttpContext
      * @param headers A set of headers to add to the request
      * @param returnType The expected return type
      * @return The return type
+     * @throws IOException if there is a communication error.
      */
     public <T> Optional<T> POST(String partialUrl, Object payload, Map<String,String> headers, Type returnType) throws IOException
     {
@@ -194,6 +202,8 @@ public class HttpContext
      * Execute a PATCH call against the partial URL.
      * @param partialUrl The partial URL to build
      * @param payload The object to use for the PATCH
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public void PATCH(String partialUrl, Object payload) throws IOException, URISyntaxException
     {
@@ -207,6 +217,8 @@ public class HttpContext
      * @param payload The object to use for the PATCH
      * @param headers A set of headers to add to the request
      * @param queryParams A set of query parameters to add to the request
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public void PATCH(String partialUrl, Object payload, Map<String,String> headers, List<String> queryParams)
         throws IOException, URISyntaxException
@@ -222,6 +234,8 @@ public class HttpContext
      * @param payload The object to use for the PATCH
      * @param returnType The expected return type
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public <T> Optional<T> PATCH(String partialUrl, Object payload, Type returnType)
         throws IOException, URISyntaxException
@@ -239,6 +253,8 @@ public class HttpContext
      * @param queryParams A set of query parameters to add to the request
      * @param returnType The expected return type
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public <T> Optional<T> PATCH(String partialUrl, Object payload, Map<String,String> headers,
         List<String> queryParams, Type returnType)
@@ -251,6 +267,8 @@ public class HttpContext
     /**
      * Execute a DELETE call against the partial URL.
      * @param partialUrl The partial URL to build
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public void DELETE(String partialUrl) throws IOException, URISyntaxException
     {    
@@ -263,6 +281,8 @@ public class HttpContext
      * @param partialUrl The partial URL to build
      * @param headers A set of headers to add to the request
      * @param queryParams A set of query parameters to add to the request
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     public void DELETE(String partialUrl, Map<String,String> headers, List<String> queryParams)
         throws IOException, URISyntaxException
@@ -277,6 +297,8 @@ public class HttpContext
      * @param uri The URI to call
      * @param returnType The type to marshall the result back into
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected <T> Optional<T> executeGetRequest(URI uri, Type returnType) throws IOException, URISyntaxException
     {
@@ -291,6 +313,8 @@ public class HttpContext
      * @param headers A set of headers to add to the request
      * @param queryParams A set of query parameters to add to the request
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected <T> Optional<T> executeGetRequest(URI uri, Map<String,String> headers, List<String> queryParams, Type returnType)
         throws IOException, URISyntaxException
@@ -310,6 +334,7 @@ public class HttpContext
      * @param uri The URI to call
      * @param obj The object to use for the POST
      * @return The response to the POST
+     * @throws IOException if there is a communication error.
      */
     protected Optional<HttpResponse> executePostRequest(URI uri, Object obj) throws IOException
     {    
@@ -322,6 +347,7 @@ public class HttpContext
      * @param obj The object to use for the POST
      * @param headers A set of headers to add to the request
      * @return The response to the POST
+     * @throws IOException if there is a communication error.
      */
     protected Optional<HttpResponse> executePostRequest(URI uri, Object obj, Map<String,String> headers) throws IOException
     {
@@ -341,6 +367,7 @@ public class HttpContext
      * @param obj The object to use for the POST
      * @param returnType The type to marshall the result back into
      * @return The return type
+     * @throws IOException if there is a communication error.
      */
     protected <T> Optional<T> executePostRequest(URI uri, Object obj, Type returnType) throws IOException
     {
@@ -355,6 +382,7 @@ public class HttpContext
      * @param headers A set of headers to add to the request
      * @param returnType The type to marshall the result back into
      * @return The return type
+     * @throws IOException if there is a communication error.
      */
     protected <T> Optional<T> executePostRequest(URI uri, Object obj, Map<String,String> headers, Type returnType)
         throws IOException
@@ -372,6 +400,8 @@ public class HttpContext
      * Execute a PATCH request.
      * @param uri The URI to call
      * @param obj The object to use for the PATCH
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected void executePatchRequest(URI uri, Object obj) throws IOException, URISyntaxException
     {
@@ -384,6 +414,8 @@ public class HttpContext
      * @param obj The object to use for the PATCH
      * @param headers A set of headers to add to the request
      * @param queryParams A set of query parameters to add to the request
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected void executePatchRequest(URI uri, Object obj, Map<String,String> headers, List<String> queryParams)
         throws IOException, URISyntaxException
@@ -407,6 +439,8 @@ public class HttpContext
      * @param queryParams A set of query parameters to add to the request
      * @param returnType The type to marshall the result back into
      * @return The return type
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected <T> Optional<T> executePatchRequest(URI uri, Object obj, Map<String,String> headers, 
         List<String> queryParams, Type returnType)
@@ -426,6 +460,8 @@ public class HttpContext
     /**
      * Execute a DELETE request.
      * @param uri The URI to call
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected void executeDeleteRequest(URI uri) throws IOException, URISyntaxException
     {
@@ -437,6 +473,8 @@ public class HttpContext
      * @param uri The URI to call
      * @param headers A set of headers to add to the request
      * @param queryParams A set of query parameters to add to the request
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
      */
     protected void executeDeleteRequest(URI uri, Map<String,String> headers, List<String> queryParams)
         throws IOException, URISyntaxException
@@ -456,6 +494,7 @@ public class HttpContext
      * @param response The HTTP response to extract the entity from
      * @param returnType The type to marshall the result back into
      * @return The extracted entity
+     * @throws IOException if there is a communication error.
      */
     private <T> Optional<T> extractEntityFromResponse(HttpResponse response, Type returnType) throws IOException
     {
