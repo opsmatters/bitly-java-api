@@ -87,4 +87,4 @@ See also the list of [contributors](https://github.com/opsmatters/bitly-java-api
 
 This project is licensed under the terms of the [Apache license 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
 
-<sub>Copyright (c) 2020 opsmatters</sub>
+<sub>Copyright (c) 2020 OpsMatters</sub>
