@@ -168,7 +168,6 @@ built.on=${TODAY}
         </configuration>
       </plugin>
 
-<!-- GERALD
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-gpg-plugin</artifactId>
@@ -183,8 +182,7 @@ built.on=${TODAY}
           </execution>
         </executions>
       </plugin>
--->
-<!-- GERALD
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -197,7 +195,7 @@ built.on=${TODAY}
           <arguments>-Dbitly.access_token=${bitly.access_token}</arguments>
         </configuration>
       </plugin>
--->
+
     </plugins>
 
   </build>
