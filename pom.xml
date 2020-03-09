@@ -154,6 +154,9 @@ built.on=${TODAY}
             </goals>
           </execution>
         </executions>
+        <configuration>
+          <source>8</source>
+        </configuration>
       </plugin>
 
       <plugin>
@@ -207,7 +210,6 @@ built.on=${TODAY}
         <artifactId>maven-javadoc-plugin</artifactId> 
         <version>3.1.1</version> 
         <configuration> 
-          <source>8</source>
           <outputDirectory>${basedir}/apidocs</outputDirectory> 
           <show>private</show>
           <windowtitle>Bitly API Documentation</windowtitle>
