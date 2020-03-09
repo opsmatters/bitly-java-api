@@ -205,7 +205,7 @@ built.on=${TODAY}
 
       <plugin> 
         <artifactId>maven-javadoc-plugin</artifactId> 
-        <version>3.0.0</version> 
+        <version>3.1.1</version> 
         <configuration> 
           <outputDirectory>${basedir}/apidocs</outputDirectory> 
           <show>private</show>
