@@ -19,18 +19,12 @@ package com.opsmatters.bitly.api.model.v4;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response with the clicks summary for a bitlink.  
+ * Represents a response with the clicks summary for a bitlink.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkClicksSummaryResponse
+public class GetBitlinkClicksSummaryResponse extends UnitsResponse
 {
-    private int units;
-    private String unit;
-
-    @SerializedName("unit_reference")
-    private String unitReference;
-
     @SerializedName("total_clicks")
     private int totalClicks;
 
@@ -39,33 +33,6 @@ public class GetBitlinkClicksSummaryResponse
      */
     public GetBitlinkClicksSummaryResponse()
     {
-    }
-
-    /**
-     * Returns the unit of the clicks.
-     * @return The unit of the clicks
-     */
-    public String getUnit()
-    {
-        return unit;
-    }
-
-    /**
-     * Returns the unit reference of the clicks.
-     * @return The unit reference of the clicks
-     */
-    public String getUnitReference()
-    {
-        return unitReference;
-    }
-
-    /**
-     * Returns the units of the clicks.
-     * @return The units of the clicks
-     */
-    public int getUnits()
-    {
-        return units;
     }
 
     /**
@@ -84,10 +51,8 @@ public class GetBitlinkClicksSummaryResponse
     public String toString()
     {
         return "GetBitlinkClicksSummaryResponse ["
+            +super.toString()
             +", totalClicks="+totalClicks
-            +", units="+units
-            +", unit="+unit
-            +", unitReference="+unitReference
             +"]";
     }
 }

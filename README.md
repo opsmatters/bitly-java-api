@@ -9,14 +9,20 @@ Java client library to execute operations on URLs using the [Bitly V4 API](https
 
 The following Bitly APIs are currently supported:
 
-### Bitlinks API
-* Get
-* Create
-* Shorten
-* Expand
-* Update
-* Get Clicks
-* Get Clicks Summary
+### Bitlinks
+
+- [x] [Shorten a Bitlink (`POST /v4/shorten`)](https://dev.bitly.com/v4/#operation/createBitlink)
+- [x] [Expand a Bitlink (`POST /v4/expand`)](https://dev.bitly.com/v4/#operation/expandBitlink)
+- [x] [Retrieve a Bitlink (`GET /v4/bitlink/{bitlink}`)](https://dev.bitly.com/v4/#operation/getBitlink)
+- [x] [Create a Bitlink (`POST /v4/bitlinks`)](https://dev.bitly.com/v4/#operation/createFullBitlink)
+- [x] [Update a Bitlink (`PATCH /v4/bitlink/{bitlink}`)](https://dev.bitly.com/v4/#operation/updateBitlink)
+- [x] [Get Clicks for a Bitlink (`GET /v4/bitlink/{bitlink}/clicks`)](https://dev.bitly.com/v4/#operation/getClicksForBitlink)
+- [x] [Get Clicks Summary for a Bitlink (`GET /v4/bitlink/{bitlink}/clicks/summary`)](https://dev.bitly.com/v4/#operation/getClicksSummaryForBitlink)
+- [ ] [Get Metrics for a Bitlink by countries (`GET /v4/bitlinks/{bitlink}/countries`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByCountries)
+- [ ] [Get Metrics for a Bitlink by referrers (`GET /v4/bitlinks/{bitlink}/referrers`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrers)
+- [ ] [Get Metrics for a Bitlink by referring domains (`GET /v4/bitlinks/{bitlink}/referring_domains`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferringDomains)
+- [ ] [Get Metrics for a Bitlink by referrers by domain (`GET /v4/bitlinks/{bitlink}/referrers_by_domains`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrersByDomains)
+- [ ] **PREMIUM** [Get a QR code for a Bitlink (`GET /v4/{bitlink}/qr`)](https://dev.bitly.com/v4/#operation/getBitlinkQRCode)
 
 ## Examples
 

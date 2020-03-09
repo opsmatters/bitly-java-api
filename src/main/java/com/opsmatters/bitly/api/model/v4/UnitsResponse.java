@@ -20,29 +20,43 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response with the clicks for a bitlink.
+ * Represents a response with units.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkClicksResponse
+public abstract class UnitsResponse
 {
-    @SerializedName("link_clicks")
-    private List<LinkClicks> linkClicks;
+    private int units;
+    private String unit;
+
+    @SerializedName("unit_reference")
+    private String unitReference;
 
     /**
-     * Default constructor.
+     * Returns the unit.
+     * @return The unit
      */
-    public GetBitlinkClicksResponse()
+    public String getUnit()
     {
+        return unit;
     }
 
     /**
-     * Returns the link clicks for the bitlink.
-     * @return The link clicks for the bitlink
+     * Returns the unit reference.
+     * @return The unit reference
      */
-    public List<LinkClicks> getLinkClicks()
+    public String getUnitReference()
     {
-        return linkClicks;
+        return unitReference;
+    }
+
+    /**
+     * Returns the units.
+     * @return The units
+     */
+    public int getUnits()
+    {
+        return units;
     }
 
     /**
@@ -51,9 +65,10 @@ public class GetBitlinkClicksResponse
     @Override
     public String toString()
     {
-        return "GetBitlinkClicksResponse ["
-            +super.toString()
-            +", linkClicks="+linkClicks
+        return "UnitsResponse ["
+            +", units="+units
+            +", unit="+unit
+            +", unitReference="+unitReference
             +"]";
     }
 }
