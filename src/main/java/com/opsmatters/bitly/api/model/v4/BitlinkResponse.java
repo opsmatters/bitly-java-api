@@ -17,19 +17,22 @@
 package com.opsmatters.bitly.api.model.v4;
 
 import java.util.List;
+import java.util.Map;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response to shorten a bitlink.  
+ * Represents a response to a bitlink create or update operation.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ShortenResponse
+public abstract class BitlinkResponse
 {
     private String id;
     private String link;
     private String title;
+    private Map<String,String> references;
     private List<String> tags;
+    private List<Deeplink> deeplinks;
     private Boolean archived;
 
     @SerializedName("long_url")
@@ -47,13 +50,6 @@ public class ShortenResponse
     @SerializedName("created_by")
     private String createdBy;
 
-    /**
-     * Default constructor.
-     */
-    public ShortenResponse()
-    {
-    }
-    
     /**
      * Returns the id of the bitlink.
      * @return The id of the bitlink
@@ -91,12 +87,30 @@ public class ShortenResponse
     }
 
     /**
+     * Returns the references for the bitlink.
+     * @return The references for the bitlink
+     */
+    public Map<String,String> getReferences()
+    {
+        return references;
+    }
+
+    /**
      * Returns the tags for the bitlink.
      * @return The tags for the bitlink
      */
     public List<String> getTags()
     {
         return tags;
+    }
+
+    /**
+     * Returns the deeplinks for the bitlink.
+     * @return The deeplinks for the bitlink
+     */
+    public List<Deeplink> getDeeplinks()
+    {
+        return deeplinks;
     }
 
     /**
@@ -150,13 +164,15 @@ public class ShortenResponse
     @Override
     public String toString()
     {
-        return "ShortenResponse ["
+        return "BitlinkResponse ["
             +"id="+id
             +", link="+link
             +", longUrl="+longUrl
             +", title="+title
             +", clientId="+clientId
             +", tags="+tags
+            +", references="+references
+            +", deeplinks="+deeplinks
             +", customBitlinks="+customBitlinks
             +", archived="+archived
             +", createdAt="+createdAt

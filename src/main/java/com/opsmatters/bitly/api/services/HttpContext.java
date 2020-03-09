@@ -26,6 +26,7 @@ import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.lang.reflect.Type;
+import com.google.gson.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.common.base.Optional;
 import org.apache.http.client.methods.HttpGet;
@@ -42,6 +43,7 @@ import org.apache.http.HttpEntity;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.entity.ContentType;
 import com.opsmatters.bitly.BitlyException;
+import com.opsmatters.bitly.api.model.ErrorResponse;
 
 /**
  * Base class for HTTP operations using API calls.  
@@ -51,6 +53,8 @@ import com.opsmatters.bitly.BitlyException;
 public class HttpContext
 {
     private static final Logger logger = Logger.getLogger(HttpContext.class.getName());
+
+    protected static final Type ERROR = new TypeToken<ErrorResponse>(){}.getType();
     
     private String protocol;
     private String hostname;
@@ -562,8 +566,12 @@ public class HttpContext
         int statusCode = response.getStatusLine().getStatusCode();
         if(statusCode != 200 && statusCode != 201 && statusCode != 204)
         {
+            ErrorResponse error = null;
+            HttpEntity entity = response.getEntity();
+            if(entity != null)
+                error = readEntity(entity, ERROR);
             throw new BitlyException(method, statusCode, 
-                response.getStatusLine().getReasonPhrase());
+                response.getStatusLine().getReasonPhrase(), error);
         }
     }
 

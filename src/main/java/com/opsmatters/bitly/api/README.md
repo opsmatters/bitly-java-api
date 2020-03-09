@@ -25,6 +25,11 @@ String link = response.getLink();
 ```
 
 Other operations have also been included for bitlinks:
+* get(id): returns the bitlink with the given id.
+* create(request): creates a new bitlink.
 * expand(id): returns the long url for a bitlink id.
+* update(request): updates the attributes of the given bitlink.
+* getClicks(id, units, unit, unitReference, size): returns the clicks for the bitlink with the given id.
+* getClicksSummary(id, units, unit, unitReference, size): returns the clicks summary for the bitlink with the given id.
 
 <sub>Copyright (c) 2020 OpsMatters</sub>

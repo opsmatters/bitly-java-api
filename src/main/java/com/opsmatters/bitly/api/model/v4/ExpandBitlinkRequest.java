@@ -23,7 +23,7 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ExpandRequest
+public class ExpandBitlinkRequest
 {
     @SerializedName("bitlink_id")
     private String id;
@@ -31,7 +31,7 @@ public class ExpandRequest
     /**
      * Default constructor.
      */
-    public ExpandRequest()
+    public ExpandBitlinkRequest()
     {
     }
     
@@ -59,7 +59,7 @@ public class ExpandRequest
     @Override
     public String toString()
     {
-        return "ExpandRequest ["
+        return "ExpandBitlinkRequest ["
             +"id="+id
             +"]";
     }
@@ -78,7 +78,7 @@ public class ExpandRequest
      */
     public static class Builder
     {
-        private ExpandRequest request = new ExpandRequest();
+        private ExpandBitlinkRequest request = new ExpandBitlinkRequest();
 
         /**
          * Sets the id of the request.
@@ -95,7 +95,7 @@ public class ExpandRequest
          * Returns the configured request
          * @return The request instance
          */
-        public ExpandRequest build()
+        public ExpandBitlinkRequest build()
         {
             return request;
         }

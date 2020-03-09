@@ -10,8 +10,13 @@ Java client library to execute operations on URLs using the [Bitly V4 API](https
 The following Bitly APIs are currently supported:
 
 ### Bitlinks API
+* Get
+* Create
 * Shorten
 * Expand
+* Update
+* Get Clicks
+* Get Clicks Summary
 
 ## Examples
 

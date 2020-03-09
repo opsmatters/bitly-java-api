@@ -17,14 +17,24 @@
 package com.opsmatters.bitly.api.services.v4;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import com.opsmatters.bitly.Bitly;
 import com.google.common.base.Optional;
 import com.opsmatters.bitly.api.services.HttpContext;
+import com.opsmatters.bitly.api.services.QueryParameterList;
 import com.opsmatters.bitly.api.services.v4.BitlyV4Service;
-import com.opsmatters.bitly.api.model.v4.ShortenRequest;
-import com.opsmatters.bitly.api.model.v4.ShortenResponse;
-import com.opsmatters.bitly.api.model.v4.ExpandRequest;
-import com.opsmatters.bitly.api.model.v4.ExpandResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksSummaryResponse;
+import com.opsmatters.bitly.api.model.v4.CreateBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.CreateBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.ShortenBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.ShortenBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.ExpandBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.UpdateBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.Unit;
 
 /**
  * The set of operations used for bitlinks.
@@ -44,14 +54,89 @@ public class BitlinksService extends BitlyV4Service
     }
 
     /**
+     * Returns the bitlink with the given id.
+     * @param id The id of the bitlink to be expanded
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetBitlinkResponse> get(String id) throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/bitlinks/%s", id), getHeaders(), null, GET_BITLINK);
+    }
+
+    /**
+     * Returns the clicks for a bitlink with the given id.
+     * @param id The id of the bitlink for the clicks
+     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
+     * @param units The time units to query data for. A value of -1 returns all units available.
+     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
+     * @param size The quantity of items to be returned
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetBitlinkClicksResponse> getClicks(String id, Unit unit, int units, String unitReference, int size)
+        throws IOException, URISyntaxException
+    {
+        QueryParameterList queryParams = new QueryParameterList();
+        if(unit != null)
+            queryParams.add("unit", unit.value());
+        if(units > 0)
+            queryParams.add("units", Integer.toString(units));
+        if(unitReference != null)
+            queryParams.add("unit_reference", unitReference);
+        if(size > 0)
+            queryParams.add("size", Integer.toString(size));
+        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks", id), getHeaders(), queryParams, GET_BITLINK_CLICKS);
+    }
+
+    /**
+     * Returns the clicks summary for a bitlink with the given id.
+     * @param id The id of the bitlink for the clicks
+     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
+     * @param units The time units to query data for. A value of -1 returns all units available.
+     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
+     * @param size The quantity of items to be returned
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetBitlinkClicksSummaryResponse> getClicksSummary(String id, Unit unit, int units, String unitReference, int size)
+        throws IOException, URISyntaxException
+    {
+        QueryParameterList queryParams = new QueryParameterList();
+        if(unit != null)
+            queryParams.add("unit", unit.value());
+        if(units > 0)
+            queryParams.add("units", Integer.toString(units));
+        if(unitReference != null)
+            queryParams.add("unit_reference", unitReference);
+        if(size > 0)
+            queryParams.add("size", Integer.toString(size));
+        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks/summary", id), getHeaders(), queryParams, GET_BITLINK_CLICKS_SUMMARY);
+    }
+
+    /**
+     * Creates a bitlink.
+     * @param request The request containing the bitlink to be created
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     */
+    public Optional<CreateBitlinkResponse> create(CreateBitlinkRequest request) throws IOException
+    {
+        return HTTP.POST("/v4/bitlinks", request, getHeaders(), CREATE_BITLINK);
+    }
+
+    /**
      * Shortens the given long url.
      * @param longUrl The long url to be shortened
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<ShortenResponse> shorten(String longUrl) throws IOException
+    public Optional<ShortenBitlinkResponse> shorten(String longUrl) throws IOException
     {
-        return shorten(ShortenRequest.builder().longUrl(longUrl).build());
+        return shorten(ShortenBitlinkRequest.builder().longUrl(longUrl).build());
     }
 
     /**
@@ -60,9 +145,9 @@ public class BitlinksService extends BitlyV4Service
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<ShortenResponse> shorten(ShortenRequest request) throws IOException
+    public Optional<ShortenBitlinkResponse> shorten(ShortenBitlinkRequest request) throws IOException
     {
-        return HTTP.POST("/v4/shorten", request, getHeaders(), SHORTEN);
+        return HTTP.POST("/v4/shorten", request, getHeaders(), SHORTEN_BITLINK);
     }
 
     /**
@@ -71,9 +156,9 @@ public class BitlinksService extends BitlyV4Service
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<ExpandResponse> expand(String id) throws IOException
+    public Optional<ExpandBitlinkResponse> expand(String id) throws IOException
     {
-        return expand(ExpandRequest.builder().id(id).build());
+        return expand(ExpandBitlinkRequest.builder().id(id).build());
     }
 
     /**
@@ -82,8 +167,22 @@ public class BitlinksService extends BitlyV4Service
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<ExpandResponse> expand(ExpandRequest request) throws IOException
+    public Optional<ExpandBitlinkResponse> expand(ExpandBitlinkRequest request) throws IOException
     {
-        return HTTP.POST("/v4/expand", request, getHeaders(), EXPAND);
+        return HTTP.POST("/v4/expand", request, getHeaders(), EXPAND_BITLINK);
+    }
+
+    /**
+     * Updates the bitlink for given bitlink id.
+     * @param id The id of the bitlink to be updated
+     * @param request The request containing the attributes of the bitlink to be updated
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<UpdateBitlinkResponse> update(String id, UpdateBitlinkRequest request)
+        throws IOException, URISyntaxException
+    {
+        return HTTP.PATCH(String.format("/v4/bitlinks/%s", id), request, getHeaders(), null, UPDATE_BITLINK);
     }
 }

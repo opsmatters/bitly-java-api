@@ -20,8 +20,13 @@ import java.lang.reflect.Type;
 import com.google.gson.reflect.TypeToken;
 import com.opsmatters.bitly.api.services.BitlyService;
 import com.opsmatters.bitly.api.services.HttpContext;
-import com.opsmatters.bitly.api.model.v4.ShortenResponse;
-import com.opsmatters.bitly.api.model.v4.ExpandResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksSummaryResponse;
+import com.opsmatters.bitly.api.model.v4.CreateBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.ShortenBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateBitlinkResponse;
 
 /**
  * Provides the types of objects to be used with v4 API calls.  
@@ -30,8 +35,13 @@ import com.opsmatters.bitly.api.model.v4.ExpandResponse;
  */
 public class BitlyV4Service extends BitlyService
 {
-    protected static final Type SHORTEN = new TypeToken<ShortenResponse>(){}.getType();
-    protected static final Type EXPAND = new TypeToken<ExpandResponse>(){}.getType();
+    protected static final Type GET_BITLINK = new TypeToken<GetBitlinkResponse>(){}.getType();
+    protected static final Type GET_BITLINK_CLICKS = new TypeToken<GetBitlinkClicksResponse>(){}.getType();
+    protected static final Type GET_BITLINK_CLICKS_SUMMARY = new TypeToken<GetBitlinkClicksSummaryResponse>(){}.getType();
+    protected static final Type CREATE_BITLINK = new TypeToken<CreateBitlinkResponse>(){}.getType();
+    protected static final Type SHORTEN_BITLINK = new TypeToken<ShortenBitlinkResponse>(){}.getType();
+    protected static final Type EXPAND_BITLINK = new TypeToken<ExpandBitlinkResponse>(){}.getType();
+    protected static final Type UPDATE_BITLINK = new TypeToken<UpdateBitlinkResponse>(){}.getType();
 
     /**
      * Constructor that takes a http context and API client.

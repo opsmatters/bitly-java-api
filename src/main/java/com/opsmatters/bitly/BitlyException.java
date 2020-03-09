@@ -16,6 +16,8 @@
 
 package com.opsmatters.bitly;
 
+import com.opsmatters.bitly.api.model.ErrorResponse;
+
 /**
  * Exception thrown when a REST API returns an error response.
  * 
@@ -26,20 +28,23 @@ public class BitlyException extends RuntimeException
     private String method;
     private int status;
     private String reason;
+    private ErrorResponse error;
 
     /**
      * Constructor that takes a method, status and reason.
      * @param method The HTTP method
      * @param status The HTTP status code
      * @param reason The HTTP reason phrase
+     * @param error The error response
      */
-    public BitlyException(String method, int status, String reason)
+    public BitlyException(String method, int status, String reason, ErrorResponse error)
     {
-        this(method+" returned response "+status+" "+reason);
+        this(method+" returned response "+status+" "+reason+": "+error);
 
         this.method = method;
         this.status = status;
         this.reason = reason;
+        this.error = error;
     }
 
     /**
@@ -76,5 +81,14 @@ public class BitlyException extends RuntimeException
     public String getReasonPhrase()
     {
         return reason;
+    }
+
+    /**
+     * Returns the error response.
+     * @return The error response
+     */
+    public ErrorResponse getErrorResponse()
+    {
+        return error;
     }
 }

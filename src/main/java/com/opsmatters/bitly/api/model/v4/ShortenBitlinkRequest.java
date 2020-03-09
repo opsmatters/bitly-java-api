@@ -23,12 +23,12 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ShortenRequest
+public class ShortenBitlinkRequest
 {
+    private String domain;
+
     @SerializedName("group_guid")
     private String groupGuid;
-
-    private String domain;
 
     @SerializedName("long_url")
     private String longUrl;
@@ -36,7 +36,7 @@ public class ShortenRequest
     /**
      * Default constructor.
      */
-    public ShortenRequest()
+    public ShortenBitlinkRequest()
     {
     }
     
@@ -100,7 +100,7 @@ public class ShortenRequest
     @Override
     public String toString()
     {
-        return "ShortenRequest ["
+        return "ShortenBitlinkRequest ["
             +"groupGuid="+groupGuid
             +", domain="+domain
             +", longUrl="+longUrl
@@ -121,7 +121,7 @@ public class ShortenRequest
      */
     public static class Builder
     {
-        private ShortenRequest request = new ShortenRequest();
+        private ShortenBitlinkRequest request = new ShortenBitlinkRequest();
 
         /**
          * Sets the group guid of the request.
@@ -160,7 +160,7 @@ public class ShortenRequest
          * Returns the configured request
          * @return The request instance
          */
-        public ShortenRequest build()
+        public ShortenBitlinkRequest build()
         {
             return request;
         }

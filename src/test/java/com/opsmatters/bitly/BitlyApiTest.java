@@ -17,13 +17,27 @@
 package com.opsmatters.bitly;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.logging.Logger;
 import org.junit.Test;
 import junit.framework.Assert;
 import com.google.common.base.Optional;
 import com.opsmatters.bitly.Bitly;
-import com.opsmatters.bitly.api.model.v4.ShortenResponse;
-import com.opsmatters.bitly.api.model.v4.ExpandResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksSummaryResponse;
+import com.opsmatters.bitly.api.model.v4.CreateBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.CreateBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.ShortenBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.UpdateBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.Unit;
 
 /**
  * The set of tests used for Bitly API services.
@@ -37,7 +51,10 @@ public class BitlyApiTest
     // Get the properties
     private String accessToken = System.getProperty("bitly.access_token");
 
-    private final String URL = "https://google.com";
+    private final String URL1 = "https://google.com";
+    private final String URL2 = "https://opsmatters.com";
+    private final String TITLE = "Bitly API Test";
+    private final String TITLE2 = "Bitly API Test Update";
 
     @Test
     public void testBitlinksServices()
@@ -54,28 +71,102 @@ public class BitlyApiTest
 
         try
         {
-            Optional<ShortenResponse> response = client.bitlinks().shorten(URL);
+            Optional<ShortenBitlinkResponse> response = client.bitlinks().shorten(URL1);
             Assert.assertTrue(response.isPresent());
             logger.info("Shortened bitlink: "+response.get().getLink());
+            Assert.assertNotNull(response.get().getLink());
             id = response.get().getId();
-            Assert.assertNotNull(id);
         }
         catch(IOException e)
         {
-            logger.warning("Error in shorten: "+e.getMessage());
+            logger.warning("Error in shorten bitlink: "+e.getMessage());
         }
 
         try
         {
-            Optional<ExpandResponse> response = client.bitlinks().expand(id);
+            Optional<ExpandBitlinkResponse> response = client.bitlinks().expand(id);
             Assert.assertTrue(response.isPresent());
             logger.info("Expanded bitlink: "+response.get().getLongUrl());
+            Assert.assertNotNull(response.get().getLongUrl());
         }
         catch(IOException e)
         {
-            logger.warning("Error in expand: "+e.getMessage());
+            logger.warning("Error in expand bitlink: "+e.getMessage());
+        }
+
+        try
+        {
+            CreateBitlinkRequest request = CreateBitlinkRequest.builder().title(TITLE).longUrl(URL2).build();
+            Optional<CreateBitlinkResponse> response = client.bitlinks().create(request);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Created bitlink: "+response.get().getLink());
+            Assert.assertNotNull(response.get().getLink());
+            id = response.get().getId();
+        }
+        catch(IOException e)
+        {
+            logger.warning("Error in create bitlink: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetBitlinkResponse> response = client.bitlinks().get(id);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink: "+response.get().getLink());
+            Assert.assertNotNull(response.get().getLink());
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink: "+e.getMessage());
+        }
+
+        try
+        {
+            UpdateBitlinkRequest request = UpdateBitlinkRequest.builder().title(TITLE2).build();
+            Optional<UpdateBitlinkResponse> response = client.bitlinks().update(id, request);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Update bitlink: "+response.get().getTitle());
+            Assert.assertEquals(response.get().getTitle(), TITLE2);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in update bitlink: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetBitlinkClicksResponse> response = client.bitlinks().getClicks(id, 
+                Unit.DAY, 7, toStringUTC(Instant.now()), 20);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink clicks: "+response.get().getLinkClicks().size());
+            Assert.assertTrue(response.get().getLinkClicks().size() > 0);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink clicks: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetBitlinkClicksSummaryResponse> response = client.bitlinks().getClicksSummary(id, 
+                Unit.DAY, 7, toStringUTC(Instant.now()), 20);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink clicks summary: "+response.get().getTotalClicks());
+            Assert.assertTrue(response.get().getTotalClicks() > 0);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink clicks summary: "+e.getMessage());
         }
 
         logger.info("Completed test: "+testName);
+    }
+
+    /**
+     * Returns the given instant as a string in UTC.
+     */
+    public static String toStringUTC(Instant dt)
+    {
+        return LocalDateTime.ofInstant(dt, ZoneOffset.UTC).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)+"+0000";
     }
 }

@@ -24,7 +24,7 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ExpandResponse
+public class ExpandBitlinkResponse
 {
     private String id;
     private String link;
@@ -38,7 +38,7 @@ public class ExpandResponse
     /**
      * Default constructor.
      */
-    public ExpandResponse()
+    public ExpandBitlinkResponse()
     {
     }
     
@@ -84,7 +84,7 @@ public class ExpandResponse
     @Override
     public String toString()
     {
-        return "ExpandResponse ["
+        return "ExpandBitlinkResponse ["
             +"id="+id
             +", link="+link
             +", longUrl="+longUrl
