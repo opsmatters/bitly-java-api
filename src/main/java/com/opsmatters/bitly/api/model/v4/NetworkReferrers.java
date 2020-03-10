@@ -20,29 +20,38 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response with the clicks for a bitlink.
+ * Represents the referrers for a network.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkClicksResponse extends UnitsResponse
+public class NetworkReferrers
 {
-    @SerializedName("link_clicks")
-    private List<LinkClicks> linkClicks;
+    private String network;
+    private List<Referrer> referrers;
 
     /**
      * Default constructor.
      */
-    public GetBitlinkClicksResponse()
+    public NetworkReferrers()
     {
     }
 
     /**
-     * Returns the link clicks for the bitlink.
-     * @return The link clicks for the bitlink
+     * Returns the network for the referrers.
+     * @return The network for the referrers
      */
-    public List<LinkClicks> getLinkClicks()
+    public String getNetwork()
     {
-        return linkClicks;
+        return network;
+    }
+
+    /**
+     * Returns the list of referrers.
+     * @return The list of referrers
+     */
+    public List<Referrer> getReferrers()
+    {
+        return referrers;
     }
 
     /**
@@ -51,9 +60,10 @@ public class GetBitlinkClicksResponse extends UnitsResponse
     @Override
     public String toString()
     {
-        return "GetBitlinkClicksResponse ["
-            +super.toString()
-            +", linkClicks="+linkClicks
+        return "NetworkReferrers ["
+            +"network="+network
+            +", referrers="+referrers
             +"]";
     }
+
 }

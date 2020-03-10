@@ -17,32 +17,33 @@
 package com.opsmatters.bitly.api.model.v4;
 
 import java.util.List;
-import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response with the clicks for a bitlink.
+ * Represents a response with the clicks for metrics.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkClicksResponse extends UnitsResponse
+public class MetricsResponse
 {
-    @SerializedName("link_clicks")
-    private List<LinkClicks> linkClicks;
+    private String facet;
+    private List<LinkClicks> metrics;
 
     /**
-     * Default constructor.
+     * Returns the facet for the metrics.
+     * @return The facet for the metrics
      */
-    public GetBitlinkClicksResponse()
+    public String getFacet()
     {
+        return facet;
     }
 
     /**
-     * Returns the link clicks for the bitlink.
-     * @return The link clicks for the bitlink
+     * Returns the link clicks for the metrics.
+     * @return The link clicks for the metrics
      */
-    public List<LinkClicks> getLinkClicks()
+    public List<LinkClicks> getMetrics()
     {
-        return linkClicks;
+        return metrics;
     }
 
     /**
@@ -51,9 +52,10 @@ public class GetBitlinkClicksResponse extends UnitsResponse
     @Override
     public String toString()
     {
-        return "GetBitlinkClicksResponse ["
+        return "MetricsResponse ["
             +super.toString()
-            +", linkClicks="+linkClicks
+            +", facet="+facet
+            +", metrics="+metrics
             +"]";
     }
 }

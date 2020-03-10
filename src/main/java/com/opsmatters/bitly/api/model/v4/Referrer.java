@@ -16,33 +16,39 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
-import java.util.List;
-import com.google.gson.annotations.SerializedName;
-
 /**
- * Represents a response with the clicks for a bitlink.
+ * Represents a referrer for a bitlink.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkClicksResponse extends UnitsResponse
+public class Referrer
 {
-    @SerializedName("link_clicks")
-    private List<LinkClicks> linkClicks;
+    private String key;
+    private String value;
 
     /**
      * Default constructor.
      */
-    public GetBitlinkClicksResponse()
+    public Referrer()
     {
     }
 
     /**
-     * Returns the link clicks for the bitlink.
-     * @return The link clicks for the bitlink
+     * Returns the key for the referrer.
+     * @return The key for the referrer
      */
-    public List<LinkClicks> getLinkClicks()
+    public String getKey()
     {
-        return linkClicks;
+        return key;
+    }
+
+    /**
+     * Returns the value for the referrer.
+     * @return The value for the referrer
+     */
+    public String getValue()
+    {
+        return value;
     }
 
     /**
@@ -51,9 +57,10 @@ public class GetBitlinkClicksResponse extends UnitsResponse
     @Override
     public String toString()
     {
-        return "GetBitlinkClicksResponse ["
-            +super.toString()
-            +", linkClicks="+linkClicks
+        return "Referrer ["
+            +"key="+key
+            +", value="+value
             +"]";
     }
+
 }

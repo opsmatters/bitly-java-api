@@ -28,16 +28,20 @@ import org.junit.Test;
 import junit.framework.Assert;
 import com.google.common.base.Optional;
 import com.opsmatters.bitly.Bitly;
+import com.opsmatters.bitly.api.model.v4.Unit;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkResponse;
-import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksResponse;
-import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksSummaryResponse;
 import com.opsmatters.bitly.api.model.v4.CreateBitlinkRequest;
 import com.opsmatters.bitly.api.model.v4.CreateBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.ShortenBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateBitlinkRequest;
 import com.opsmatters.bitly.api.model.v4.UpdateBitlinkResponse;
-import com.opsmatters.bitly.api.model.v4.Unit;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksSummaryResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByCountriesResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringDomainsResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersByDomainResponse;
 
 /**
  * The set of tests used for Bitly API services.
@@ -55,6 +59,10 @@ public class BitlyApiTest
     private final String URL2 = "https://opsmatters.com";
     private final String TITLE = "Bitly API Test";
     private final String TITLE2 = "Bitly API Test Update";
+    private final Unit UNIT = Unit.DAY;
+    private final int UNITS = 7;
+    private final String UNITS_REFERENCE = toStringUTC(Instant.now());
+    private final int SIZE = 20;
 
     @Test
     public void testBitlinksServices()
@@ -67,7 +75,7 @@ public class BitlyApiTest
         Bitly client = new Bitly(accessToken);
         Assert.assertNotNull(client);
 
-        String id = null;
+        String bitlink = null;
 
         try
         {
@@ -75,7 +83,7 @@ public class BitlyApiTest
             Assert.assertTrue(response.isPresent());
             logger.info("Shortened bitlink: "+response.get().getLink());
             Assert.assertNotNull(response.get().getLink());
-            id = response.get().getId();
+            bitlink = response.get().getId();
         }
         catch(IOException e)
         {
@@ -84,7 +92,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<ExpandBitlinkResponse> response = client.bitlinks().expand(id);
+            Optional<ExpandBitlinkResponse> response = client.bitlinks().expand(bitlink);
             Assert.assertTrue(response.isPresent());
             logger.info("Expanded bitlink: "+response.get().getLongUrl());
             Assert.assertNotNull(response.get().getLongUrl());
@@ -101,7 +109,7 @@ public class BitlyApiTest
             Assert.assertTrue(response.isPresent());
             logger.info("Created bitlink: "+response.get().getLink());
             Assert.assertNotNull(response.get().getLink());
-            id = response.get().getId();
+            bitlink = response.get().getId();
         }
         catch(IOException e)
         {
@@ -110,7 +118,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetBitlinkResponse> response = client.bitlinks().get(id);
+            Optional<GetBitlinkResponse> response = client.bitlinks().get(bitlink);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink: "+response.get().getLink());
             Assert.assertNotNull(response.get().getLink());
@@ -123,7 +131,7 @@ public class BitlyApiTest
         try
         {
             UpdateBitlinkRequest request = UpdateBitlinkRequest.builder().title(TITLE2).build();
-            Optional<UpdateBitlinkResponse> response = client.bitlinks().update(id, request);
+            Optional<UpdateBitlinkResponse> response = client.bitlinks().update(bitlink, request);
             Assert.assertTrue(response.isPresent());
             logger.info("Update bitlink: "+response.get().getTitle());
             Assert.assertEquals(response.get().getTitle(), TITLE2);
@@ -135,8 +143,8 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetBitlinkClicksResponse> response = client.bitlinks().getClicks(id, 
-                Unit.DAY, 7, toStringUTC(Instant.now()), 20);
+            Optional<GetBitlinkClicksResponse> response = client.bitlinks().getClicks(bitlink, 
+                UNIT, UNITS, UNITS_REFERENCE, SIZE);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink clicks: "+response.get().getLinkClicks().size());
             Assert.assertTrue(response.get().getLinkClicks().size() > 0);
@@ -148,8 +156,8 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetBitlinkClicksSummaryResponse> response = client.bitlinks().getClicksSummary(id, 
-                Unit.DAY, 7, toStringUTC(Instant.now()), 20);
+            Optional<GetBitlinkClicksSummaryResponse> response = client.bitlinks().getClicksSummary(bitlink, 
+                UNIT, UNITS, UNITS_REFERENCE, SIZE);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink clicks summary: "+response.get().getTotalClicks());
             Assert.assertTrue(response.get().getTotalClicks() > 0);
@@ -157,6 +165,58 @@ public class BitlyApiTest
         catch(IOException | URISyntaxException e)
         {
             logger.warning("Error in get bitlink clicks summary: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetMetricsByCountriesResponse> response = client.bitlinks().getMetricsByCountries(bitlink, 
+                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink metrics by countries: "+response.get().getMetrics().size());
+            Assert.assertTrue(response.get().getMetrics().size() > 0);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink clicks: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetMetricsByReferrersResponse> response = client.bitlinks().getMetricsByReferrers(bitlink, 
+                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink metrics by referrers: "+response.get().getMetrics().size());
+            Assert.assertTrue(response.get().getMetrics().size() > 0);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink clicks: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetMetricsByReferringDomainsResponse> response = client.bitlinks().getMetricsByReferringDomains(bitlink, 
+                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink metrics by referring domains: "+response.get().getMetrics().size());
+            Assert.assertTrue(response.get().getMetrics().size() > 0);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink clicks: "+e.getMessage());
+        }
+
+        try
+        {
+            Optional<GetMetricsByReferrersByDomainResponse> response = client.bitlinks().getMetricsByReferrersByDomain(bitlink, 
+                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Assert.assertTrue(response.isPresent());
+            logger.info("Get bitlink metrics by referrers by domain: "+response.get().getReferrersByDomain().size());
+            Assert.assertTrue(response.get().getReferrersByDomain().size() > 0);
+        }
+        catch(IOException | URISyntaxException e)
+        {
+            logger.warning("Error in get bitlink clicks: "+e.getMessage());
         }
 
         logger.info("Completed test: "+testName);

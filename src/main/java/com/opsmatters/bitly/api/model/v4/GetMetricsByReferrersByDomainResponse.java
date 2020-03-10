@@ -20,29 +20,40 @@ import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response with the clicks for a bitlink.
+ * Represents a response with the clicks for a bitlink by referrers by domain.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkClicksResponse extends UnitsResponse
+public class GetMetricsByReferrersByDomainResponse extends UnitsResponse
 {
-    @SerializedName("link_clicks")
-    private List<LinkClicks> linkClicks;
+    private String facet;
+
+    @SerializedName("referrers_by_domain")
+    private List<NetworkReferrers> referrersByDomain;
 
     /**
      * Default constructor.
      */
-    public GetBitlinkClicksResponse()
+    public GetMetricsByReferrersByDomainResponse()
     {
     }
 
     /**
-     * Returns the link clicks for the bitlink.
-     * @return The link clicks for the bitlink
+     * Returns the facet for the metrics.
+     * @return The facet for the metrics
      */
-    public List<LinkClicks> getLinkClicks()
+    public String getFacet()
     {
-        return linkClicks;
+        return facet;
+    }
+
+    /**
+     * Returns the referrers for the metrics.
+     * @return The referrers for the metrics
+     */
+    public List<NetworkReferrers> getReferrersByDomain()
+    {
+        return referrersByDomain;
     }
 
     /**
@@ -51,9 +62,10 @@ public class GetBitlinkClicksResponse extends UnitsResponse
     @Override
     public String toString()
     {
-        return "GetBitlinkClicksResponse ["
+        return "GetMetricsByReferrersByDomainResponse ["
             +super.toString()
-            +", linkClicks="+linkClicks
+            +", facet="+facet
+            +", referrersByDomain="+referrersByDomain
             +"]";
     }
 }

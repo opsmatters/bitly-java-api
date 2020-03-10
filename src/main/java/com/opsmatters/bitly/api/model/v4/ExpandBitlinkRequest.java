@@ -26,7 +26,7 @@ import com.google.gson.annotations.SerializedName;
 public class ExpandBitlinkRequest
 {
     @SerializedName("bitlink_id")
-    private String id;
+    private String bitlink;
 
     /**
      * Default constructor.
@@ -36,21 +36,21 @@ public class ExpandBitlinkRequest
     }
     
     /**
-     * Returns the id of the bitlink.
-     * @return The id of the bitlink
+     * Returns the bitlink.
+     * @return The bitlink
      */
-    public String getId()
+    public String getBitlink()
     {
-        return id;
+        return bitlink;
     }
 
     /**
-     * Sets the id of the bitlink.
-     * @param id The id of the bitlink
+     * Sets the bitlink.
+     * @param bitlink The bitlink
      */
-    public void setId(String id)
+    public void setBitlink(String bitlink)
     {
-        this.id = id;
+        this.bitlink = bitlink;
     }
 
     /**
@@ -60,7 +60,7 @@ public class ExpandBitlinkRequest
     public String toString()
     {
         return "ExpandBitlinkRequest ["
-            +"id="+id
+            +"bitlink="+bitlink
             +"]";
     }
 
@@ -81,13 +81,13 @@ public class ExpandBitlinkRequest
         private ExpandBitlinkRequest request = new ExpandBitlinkRequest();
 
         /**
-         * Sets the id of the request.
-         * @param id The id of the request
+         * Sets the bitlink for the request.
+         * @param bitlink The bitlink for the request
          * @return This object
          */
-        public Builder id(String id)
+        public Builder bitlink(String bitlink)
         {
-            request.setId(id);
+            request.setBitlink(bitlink);
             return this;
         }
 

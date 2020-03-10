@@ -25,11 +25,15 @@ String link = response.getLink();
 ```
 
 Other operations have also been included for bitlinks:
-* get(id): returns the bitlink with the given id.
-* create(request): creates a new bitlink.
-* expand(id): returns the long url for a bitlink id.
-* update(request): updates the attributes of the given bitlink.
-* getClicks(id, units, unit, unitReference, size): returns the clicks for the bitlink with the given id.
-* getClicksSummary(id, units, unit, unitReference, size): returns the clicks summary for the bitlink with the given id.
+* get(bitlink): returns the attributes of the given bitlink.
+* create(object): creates a new bitlink.
+* expand(bitlink): returns the long url for the given bitlink.
+* update(bitlink, object): updates the attributes of the given bitlink.
+* getClicks(bitlink, units, unit, unitReference, size): returns the clicks for the given bitlink.
+* getClicksSummary(bitlink, units, unit, unitReference, size): returns the clicks summary for the given bitlink.
+* getMetricsByCountries(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
+* getMetricsByReferrers(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
+* getMetricsByReferringDomains(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
+* getMetricsByReferrersByDomain(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
 
 <sub>Copyright (c) 2020 OpsMatters</sub>

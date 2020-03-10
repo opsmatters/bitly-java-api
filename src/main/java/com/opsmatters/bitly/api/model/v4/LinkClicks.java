@@ -19,13 +19,14 @@ package com.opsmatters.bitly.api.model.v4;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents the link clicks for a date.
+ * Represents the link clicks for a date or metric value.
  * 
  * @author Gerald Curley (opsmatters)
  */
 public class LinkClicks
 {
     private String date;
+    private String value;
     private int clicks;
 
     /**
@@ -45,6 +46,15 @@ public class LinkClicks
     }
 
     /**
+     * Returns the metric value for the clicks.
+     * @return The metric value for the clicks
+     */
+    public String getValue()
+    {
+        return value;
+    }
+
+    /**
      * Returns the clicks for the link.
      * @return The clicks for the link
      */
@@ -61,6 +71,7 @@ public class LinkClicks
     {
         return "LinkClicks ["
             +"date="+date
+            +", value="+value
             +", clicks="+clicks
             +"]";
     }
