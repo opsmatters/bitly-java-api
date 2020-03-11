@@ -14,13 +14,13 @@ Bitly client = new Bitly("<YOUR_ACCESS_TOKEN>");
 ### Bitlinks
 To shorten a URL and create a bitlink, first instantiate the request object and then pass it to the "shorten" operation:
 ```
-ShortenRequest request = ShortenRequest.builder().longUrl(longUrl).build();
-ShortenResponse response = client.bitlinks().shorten(request).get();
+CreateBitlinkRequest request = CreateBitlinkRequest.builder().longUrl(longUrl).build();
+CreateBitlinkResponse response = client.bitlinks().shorten(request).get();
 String link = response.getLink();
 ```
 Alternatively if the request is using the default domain, this can be simplified to:
 ```
-ShortenResponse response = client.bitlinks().shorten(longUrl).get();
+CreateBitlinkResponse response = client.bitlinks().shorten(longUrl).get();
 String link = response.getLink();
 ```
 
