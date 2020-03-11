@@ -25,16 +25,16 @@ String link = response.getLink();
 ```
 
 Other operations have also been included for bitlinks:
-* get(bitlink): returns the attributes of the given bitlink.
 * create(object): creates a new bitlink.
-* expand(bitlink): returns the long url for the given bitlink.
-* update(bitlink, object): updates the attributes of the given bitlink.
-* getClicks(bitlink, units, unit, unitReference, size): returns the clicks for the given bitlink.
-* getClicksSummary(bitlink, units, unit, unitReference, size): returns the clicks summary for the given bitlink.
-* getMetricsByCountries(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
-* getMetricsByReferrers(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
-* getMetricsByReferringDomains(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
-* getMetricsByReferrersByDomain(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
+* get(bitlink): returns the attributes of the given bitlink.
+* expand(bitlink): returns a summary of the given bitlink, including the long url.
+* update(bitlink, object): updates the attributes of the given bitlink using the given object.
+* getClicks(bitlink, query): returns the clicks for the given bitlink and query parameters.
+* getClicksSummary(bitlink, query): returns the clicks summary for the given bitlink and query parameters.
+* getMetricsByCountries(bitlink, query): returns the metrics for the given bitlink and query parameters.
+* getMetricsByReferrers(bitlink, query): returns the metrics for the given bitlink and query parameters.
+* getMetricsByReferringDomains(bitlink, query): returns the metrics for the given bitlink and query parameters.
+* getMetricsByReferrersByDomain(bitlink, query): returns the metrics for the given bitlink and query parameters.
 * getQrCode(bitlink): returns the QR code for the given bitlink.
 
 <sub>Copyright (c) 2020 OpsMatters</sub>
