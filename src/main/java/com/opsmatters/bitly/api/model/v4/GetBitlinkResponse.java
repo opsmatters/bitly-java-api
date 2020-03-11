@@ -21,7 +21,7 @@ package com.opsmatters.bitly.api.model.v4;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkResponse extends BitlinkResponse
+public class GetBitlinkResponse extends Bitlink
 {
     /**
      * Default constructor.

@@ -35,5 +35,6 @@ Other operations have also been included for bitlinks:
 * getMetricsByReferrers(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
 * getMetricsByReferringDomains(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
 * getMetricsByReferrersByDomain(bitlink, units, unit, unitReference, size): returns the metrics for the given bitlink.
+* getQrCode(bitlink): returns the QR code for the given bitlink.
 
 <sub>Copyright (c) 2020 OpsMatters</sub>

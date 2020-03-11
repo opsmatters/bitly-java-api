@@ -16,28 +16,65 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Represents a response to create a bitlink.  
+ * Represents the QR code for a bitlink.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class CreateBitlinkResponse extends Bitlink
+public class GetBitlinkQrCodeResponse
 {
+    private String id;
+    private String link;
+
+    @SerializedName("qr_code")
+    private String qrCode;
+
     /**
      * Default constructor.
      */
-    public CreateBitlinkResponse()
+    public GetBitlinkQrCodeResponse()
     {
     }
-    
+
+    /**
+     * Returns the bitlink id.
+     * @return The bitlink id
+     */
+    public String getId()
+    {
+        return id;
+    }
+
+    /**
+     * Returns the link.
+     * @return The link
+     */
+    public String getLink()
+    {
+        return link;
+    }
+
+    /**
+     * Returns the QR code.
+     * @return The QR code
+     */
+    public String getQrCode()
+    {
+        return qrCode;
+    }
+
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "CreateBitlinkResponse ["
-            +super.toString()
+        return "GetBitlinkQrCodeResponse ["
+            +" id="+id
+            +" link="+link
+            +" qrCode="+qrCode
             +"]";
     }
 }

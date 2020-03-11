@@ -19,6 +19,7 @@ package com.opsmatters.bitly;
 import java.util.logging.Logger;
 import com.opsmatters.bitly.api.services.HttpContext;
 import com.opsmatters.bitly.api.services.v4.BitlinksService;
+import com.opsmatters.bitly.api.services.v4.GroupsService;
 
 /**
  * Client used to invoke Bitly operations using the v4 REST API.
@@ -52,5 +53,14 @@ public class Bitly
     public BitlinksService bitlinks()
     {
         return new BitlinksService(accessToken, httpContext);
+    }
+
+    /**
+     * Returns the groups service.
+     * @return The groups service
+     */
+    public GroupsService groups()
+    {
+        return new GroupsService(accessToken, httpContext);
     }
 }

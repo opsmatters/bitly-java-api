@@ -29,10 +29,10 @@ import junit.framework.Assert;
 import com.google.common.base.Optional;
 import com.opsmatters.bitly.Bitly;
 import com.opsmatters.bitly.api.model.v4.Unit;
+import com.opsmatters.bitly.api.model.v4.UnitQuery;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkResponse;
-import com.opsmatters.bitly.api.model.v4.CreateBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.CreateFullBitlinkRequest;
 import com.opsmatters.bitly.api.model.v4.CreateBitlinkResponse;
-import com.opsmatters.bitly.api.model.v4.ShortenBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateBitlinkRequest;
 import com.opsmatters.bitly.api.model.v4.UpdateBitlinkResponse;
@@ -59,10 +59,6 @@ public class BitlyApiTest
     private final String URL2 = "https://opsmatters.com";
     private final String TITLE = "Bitly API Test";
     private final String TITLE2 = "Bitly API Test Update";
-    private final Unit UNIT = Unit.DAY;
-    private final int UNITS = 7;
-    private final String UNITS_REFERENCE = toStringUTC(Instant.now());
-    private final int SIZE = 20;
 
     @Test
     public void testBitlinksServices()
@@ -76,10 +72,16 @@ public class BitlyApiTest
         Assert.assertNotNull(client);
 
         String bitlink = null;
+        UnitQuery units = UnitQuery.builder()
+            .unit(Unit.DAY)
+            .units(7)
+            .unitReference(toStringUTC(Instant.now()))
+            .size(20)
+            .build();
 
         try
         {
-            Optional<ShortenBitlinkResponse> response = client.bitlinks().shorten(URL1);
+            Optional<CreateBitlinkResponse> response = client.bitlinks().shorten(URL1);
             Assert.assertTrue(response.isPresent());
             logger.info("Shortened bitlink: "+response.get().getLink());
             Assert.assertNotNull(response.get().getLink());
@@ -104,7 +106,7 @@ public class BitlyApiTest
 
         try
         {
-            CreateBitlinkRequest request = CreateBitlinkRequest.builder().title(TITLE).longUrl(URL2).build();
+            CreateFullBitlinkRequest request = CreateFullBitlinkRequest.builder().title(TITLE).longUrl(URL2).build();
             Optional<CreateBitlinkResponse> response = client.bitlinks().create(request);
             Assert.assertTrue(response.isPresent());
             logger.info("Created bitlink: "+response.get().getLink());
@@ -143,8 +145,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetBitlinkClicksResponse> response = client.bitlinks().getClicks(bitlink, 
-                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Optional<GetBitlinkClicksResponse> response = client.bitlinks().getClicks(bitlink, units);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink clicks: "+response.get().getLinkClicks().size());
             Assert.assertTrue(response.get().getLinkClicks().size() > 0);
@@ -156,8 +157,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetBitlinkClicksSummaryResponse> response = client.bitlinks().getClicksSummary(bitlink, 
-                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Optional<GetBitlinkClicksSummaryResponse> response = client.bitlinks().getClicksSummary(bitlink, units);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink clicks summary: "+response.get().getTotalClicks());
             Assert.assertTrue(response.get().getTotalClicks() > 0);
@@ -169,8 +169,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetMetricsByCountriesResponse> response = client.bitlinks().getMetricsByCountries(bitlink, 
-                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Optional<GetMetricsByCountriesResponse> response = client.bitlinks().getMetricsByCountries(bitlink, units);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink metrics by countries: "+response.get().getMetrics().size());
             Assert.assertTrue(response.get().getMetrics().size() > 0);
@@ -182,8 +181,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetMetricsByReferrersResponse> response = client.bitlinks().getMetricsByReferrers(bitlink, 
-                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Optional<GetMetricsByReferrersResponse> response = client.bitlinks().getMetricsByReferrers(bitlink, units);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink metrics by referrers: "+response.get().getMetrics().size());
             Assert.assertTrue(response.get().getMetrics().size() > 0);
@@ -195,8 +193,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetMetricsByReferringDomainsResponse> response = client.bitlinks().getMetricsByReferringDomains(bitlink, 
-                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Optional<GetMetricsByReferringDomainsResponse> response = client.bitlinks().getMetricsByReferringDomains(bitlink, units);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink metrics by referring domains: "+response.get().getMetrics().size());
             Assert.assertTrue(response.get().getMetrics().size() > 0);
@@ -208,8 +205,7 @@ public class BitlyApiTest
 
         try
         {
-            Optional<GetMetricsByReferrersByDomainResponse> response = client.bitlinks().getMetricsByReferrersByDomain(bitlink, 
-                UNIT, UNITS, UNITS_REFERENCE, SIZE);
+            Optional<GetMetricsByReferrersByDomainResponse> response = client.bitlinks().getMetricsByReferrersByDomain(bitlink, units);
             Assert.assertTrue(response.isPresent());
             logger.info("Get bitlink metrics by referrers by domain: "+response.get().getReferrersByDomain().size());
             Assert.assertTrue(response.get().getReferrersByDomain().size() > 0);

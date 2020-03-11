@@ -16,28 +16,56 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
+import java.util.List;
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Represents a response to create a bitlink.  
+ * Represents a sorted group of bitlinks. 
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class CreateBitlinkResponse extends Bitlink
+public class GetSortedBitlinksByGroupResponse
 {
+    private List<Bitlink> links;
+
+    @SerializedName("sorted_links")
+    private List<LinkClicks> sortedLinks;
+
     /**
      * Default constructor.
      */
-    public CreateBitlinkResponse()
+    public GetSortedBitlinksByGroupResponse()
     {
     }
-    
+
+    /**
+     * Returns the sorted bitlinks.
+     * @return The sorted bitlinks
+     */
+    public List<LinkClicks> getSortedLinks()
+    {
+        return sortedLinks;
+    }
+
+    /**
+     * Returns the bitlinks.
+     * @return The bitlinks
+     */
+    public List<Bitlink> getLinks()
+    {
+        return links;
+    }
+
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "CreateBitlinkResponse ["
+        return "GetSortedBitlinksByGroupResponse ["
             +super.toString()
+            +" links="+links
+            +" sortedLinks="+sortedLinks
             +"]";
     }
 }

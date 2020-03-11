@@ -16,20 +16,16 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
-import java.util.List;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a request to create a bitlink.  
+ * Represents a request to shorten a bitlink.  
  * 
  * @author Gerald Curley (opsmatters)
  */
 public class CreateBitlinkRequest
 {
     private String domain;
-    private String title;
-    private List<String> tags;
-    private List<Deeplink> deeplinks;
 
     @SerializedName("group_guid")
     private String groupGuid;
@@ -81,24 +77,6 @@ public class CreateBitlinkRequest
     }
 
     /**
-     * Returns the title of the bitlink.
-     * @return The title of the bitlink
-     */
-    public String getTitle()
-    {
-        return title;
-    }
-
-    /**
-     * Sets the title of the bitlink.
-     * @param title The title of the bitlink
-     */
-    public void setTitle(String title)
-    {
-        this.title = title;
-    }
-
-    /**
      * Returns the long url of the bitlink.
      * @return The long url of the bitlink
      */
@@ -117,42 +95,6 @@ public class CreateBitlinkRequest
     }
 
     /**
-     * Returns the tags for the bitlink.
-     * @return The tags for the bitlink
-     */
-    public List<String> getTags()
-    {
-        return tags;
-    }
-
-    /**
-     * Sets the tags for the bitlink.
-     * @param tags The tags for the bitlink
-     */
-    public void setTags(List<String> tags)
-    {
-        this.tags = tags;
-    }
-
-    /**
-     * Returns the deeplinks for the bitlink.
-     * @return The deeplinks for the bitlink
-     */
-    public List<Deeplink> getDeeplinks()
-    {
-        return deeplinks;
-    }
-
-    /**
-     * Sets the deeplinks for the bitlink.
-     * @param deeplinks The deeplinks for the bitlink
-     */
-    public void setDeeplinks(List<Deeplink> deeplinks)
-    {
-        this.deeplinks = deeplinks;
-    }
-
-    /**
      * Returns a string representation of the object.
      */
     @Override
@@ -161,10 +103,7 @@ public class CreateBitlinkRequest
         return "CreateBitlinkRequest ["
             +"groupGuid="+groupGuid
             +", domain="+domain
-            +", title="+title
             +", longUrl="+longUrl
-            +", tags="+tags
-            +", deeplinks="+deeplinks
             +"]";
     }
 
@@ -180,19 +119,30 @@ public class CreateBitlinkRequest
     /**
      * Builder to make request construction easier.
      */
-    public static class Builder
+    public static class Builder<T extends CreateBitlinkRequest, B extends Builder<T,B>>
     {
         private CreateBitlinkRequest request = new CreateBitlinkRequest();
+
+        /**
+         * Sets the request.
+         * @param request The request
+         * @return This object
+         */
+        public B request(CreateBitlinkRequest request)
+        {
+            this.request = request;
+            return self();
+        }
 
         /**
          * Sets the group guid of the request.
          * @param groupGuid The group guid of the request
          * @return This object
          */
-        public Builder groupGuid(String groupGuid)
+        public B groupGuid(String groupGuid)
         {
             request.setGroupGuid(groupGuid);
-            return this;
+            return self();
         }
 
         /**
@@ -200,21 +150,10 @@ public class CreateBitlinkRequest
          * @param domain The domain of the request
          * @return This object
          */
-        public Builder domain(String domain)
+        public B domain(String domain)
         {
             request.setDomain(domain);
-            return this;
-        }
-
-        /**
-         * Sets the title of the request.
-         * @param title The title of the request
-         * @return This object
-         */
-        public Builder title(String title)
-        {
-            request.setTitle(title);
-            return this;
+            return self();
         }
 
         /**
@@ -222,41 +161,28 @@ public class CreateBitlinkRequest
          * @param longUrl The long url of the request
          * @return This object
          */
-        public Builder longUrl(String longUrl)
+        public B longUrl(String longUrl)
         {
             request.setLongUrl(longUrl);
-            return this;
+            return self();
         }
 
         /**
-         * Sets the tags for the request.
-         * @param tags The tags for the request
+         * Returns this object.
          * @return This object
          */
-        public Builder tags(List<String> tags)
+        protected B self()
         {
-            request.setTags(tags);
-            return this;
-        }
-
-        /**
-         * Sets the deeplinks for the request.
-         * @param deeplinks The deeplinks for the request
-         * @return This object
-         */
-        public Builder deeplinks(List<Deeplink> deeplinks)
-        {
-            request.setDeeplinks(deeplinks);
-            return this;
+            return (B)this;
         }
 
         /**
          * Returns the configured request
          * @return The request instance
          */
-        public CreateBitlinkRequest build()
+        public T build()
         {
-            return request;
+            return (T)request;
         }
     }
 }

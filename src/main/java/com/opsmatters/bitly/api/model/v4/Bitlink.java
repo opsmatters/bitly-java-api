@@ -21,11 +21,11 @@ import java.util.Map;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents a response to a bitlink create or update operation.
+ * Represents the attributes of a bitlink.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public abstract class BitlinkResponse
+public abstract class Bitlink
 {
     private String id;
     private String link;
@@ -164,7 +164,7 @@ public abstract class BitlinkResponse
     @Override
     public String toString()
     {
-        return "BitlinkResponse ["
+        return "Bitlink ["
             +"id="+id
             +", link="+link
             +", longUrl="+longUrl

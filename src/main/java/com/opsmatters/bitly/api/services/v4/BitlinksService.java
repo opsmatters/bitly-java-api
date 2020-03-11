@@ -18,17 +18,14 @@ package com.opsmatters.bitly.api.services.v4;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import com.opsmatters.bitly.Bitly;
 import com.google.common.base.Optional;
 import com.opsmatters.bitly.api.services.HttpContext;
-import com.opsmatters.bitly.api.services.QueryParameterList;
 import com.opsmatters.bitly.api.services.v4.BitlyV4Service;
-import com.opsmatters.bitly.api.model.v4.Unit;
+import com.opsmatters.bitly.api.model.v4.UnitQuery;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.CreateBitlinkRequest;
+import com.opsmatters.bitly.api.model.v4.CreateFullBitlinkRequest;
 import com.opsmatters.bitly.api.model.v4.CreateBitlinkResponse;
-import com.opsmatters.bitly.api.model.v4.ShortenBitlinkRequest;
-import com.opsmatters.bitly.api.model.v4.ShortenBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.ExpandBitlinkRequest;
 import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateBitlinkRequest;
@@ -39,6 +36,7 @@ import com.opsmatters.bitly.api.model.v4.GetMetricsByCountriesResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersByDomainResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringDomainsResponse;
+import com.opsmatters.bitly.api.model.v4.GetBitlinkQrCodeResponse;
 
 /**
  * The set of operations used for bitlinks.
@@ -75,7 +73,7 @@ public class BitlinksService extends BitlyV4Service
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<CreateBitlinkResponse> create(CreateBitlinkRequest request) throws IOException
+    public Optional<CreateBitlinkResponse> create(CreateFullBitlinkRequest request) throws IOException
     {
         return HTTP.POST("/v4/bitlinks", request, getHeaders(), CREATE_BITLINK);
     }
@@ -86,9 +84,9 @@ public class BitlinksService extends BitlyV4Service
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<ShortenBitlinkResponse> shorten(String longUrl) throws IOException
+    public Optional<CreateBitlinkResponse> shorten(String longUrl) throws IOException
     {
-        return shorten(ShortenBitlinkRequest.builder().longUrl(longUrl).build());
+        return shorten(CreateBitlinkRequest.builder().longUrl(longUrl).build());
     }
 
     /**
@@ -97,9 +95,9 @@ public class BitlinksService extends BitlyV4Service
      * @return The response object
      * @throws IOException if there is a communication error.
      */
-    public Optional<ShortenBitlinkResponse> shorten(ShortenBitlinkRequest request) throws IOException
+    public Optional<CreateBitlinkResponse> shorten(CreateBitlinkRequest request) throws IOException
     {
-        return HTTP.POST("/v4/shorten", request, getHeaders(), SHORTEN_BITLINK);
+        return HTTP.POST("/v4/shorten", request, getHeaders(), CREATE_BITLINK);
     }
 
     /**
@@ -139,132 +137,99 @@ public class BitlinksService extends BitlyV4Service
     }
 
     /**
-     * Returns the query parameter list for the given units.
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
-     * @return The list of query parameters
-     */
-    public QueryParameterList getQueryParameterList(Unit unit, int units, String unitReference, int size)
-    {
-        QueryParameterList queryParams = new QueryParameterList();
-        if(unit != null)
-            queryParams.add("unit", unit.value());
-        if(units > 0)
-            queryParams.add("units", Integer.toString(units));
-        if(unitReference != null)
-            queryParams.add("unit_reference", unitReference);
-        if(size > 0)
-            queryParams.add("size", Integer.toString(size));
-        return queryParams;
-    }
-
-    /**
      * Returns the clicks for the given bitlink.
      * @param bitlink The bitlink for the metrics
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
+     * @param query The attributes of the units to use for the query
      * @return The response object
      * @throws IOException if there is a communication error.
      * @throws URISyntaxException if there is a format error in the URL.
      */
-    public Optional<GetBitlinkClicksResponse> getClicks(String bitlink, Unit unit, int units, String unitReference, int size)
+    public Optional<GetBitlinkClicksResponse> getClicks(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        QueryParameterList queryParams = getQueryParameterList(unit, units, unitReference, size);
-        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks", bitlink), getHeaders(), queryParams, GET_BITLINK_CLICKS);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks", bitlink), getHeaders(), getQueryParameterList(query), GET_BITLINK_CLICKS);
     }
 
     /**
      * Returns the clicks summary for the given bitlink.
      * @param bitlink The bitlink for the metrics
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
+     * @param query The attributes of the units to use for the query
      * @return The response object
      * @throws IOException if there is a communication error.
      * @throws URISyntaxException if there is a format error in the URL.
      */
-    public Optional<GetBitlinkClicksSummaryResponse> getClicksSummary(String bitlink, Unit unit, int units, String unitReference, int size)
+    public Optional<GetBitlinkClicksSummaryResponse> getClicksSummary(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        QueryParameterList queryParams = getQueryParameterList(unit, units, unitReference, size);
-        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks/summary", bitlink), getHeaders(), queryParams, GET_BITLINK_CLICKS_SUMMARY);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks/summary", bitlink), getHeaders(), getQueryParameterList(query), GET_BITLINK_CLICKS_SUMMARY);
     }
 
     /**
      * Returns the metrics for the given bitlink by countries.
      * @param bitlink The bitlink for the metrics
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
+     * @param query The attributes of the units to use for the query
      * @return The response object
      * @throws IOException if there is a communication error.
      * @throws URISyntaxException if there is a format error in the URL.
      */
-    public Optional<GetMetricsByCountriesResponse> getMetricsByCountries(String bitlink, Unit unit, int units, String unitReference, int size)
+    public Optional<GetMetricsByCountriesResponse> getMetricsByCountries(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        QueryParameterList queryParams = getQueryParameterList(unit, units, unitReference, size);
-        return HTTP.GET(String.format("/v4/bitlinks/%s/countries", bitlink), getHeaders(), queryParams, GET_METRICS_BY_COUNTRIES);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/countries", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_COUNTRIES);
     }
 
     /**
      * Returns the metrics for the given bitlink by referrers.
      * @param bitlink The bitlink for the metrics
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
+     * @param query The attributes of the units to use for the query
      * @return The response object
      * @throws IOException if there is a communication error.
      * @throws URISyntaxException if there is a format error in the URL.
      */
-    public Optional<GetMetricsByReferrersResponse> getMetricsByReferrers(String bitlink, Unit unit, int units, String unitReference, int size)
+    public Optional<GetMetricsByReferrersResponse> getMetricsByReferrers(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        QueryParameterList queryParams = getQueryParameterList(unit, units, unitReference, size);
-        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers", bitlink), getHeaders(), queryParams, GET_METRICS_BY_REFERRERS);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRERS);
     }
 
     /**
      * Returns the metrics for the given bitlink by referring domains.
      * @param bitlink The bitlink for the metrics
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
+     * @param query The attributes of the units to use for the query
      * @return The response object
      * @throws IOException if there is a communication error.
      * @throws URISyntaxException if there is a format error in the URL.
      */
-    public Optional<GetMetricsByReferringDomainsResponse> getMetricsByReferringDomains(String bitlink, Unit unit, int units, String unitReference, int size)
+    public Optional<GetMetricsByReferringDomainsResponse> getMetricsByReferringDomains(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        QueryParameterList queryParams = getQueryParameterList(unit, units, unitReference, size);
-        return HTTP.GET(String.format("/v4/bitlinks/%s/referring_domains", bitlink), getHeaders(), queryParams, GET_METRICS_BY_REFERRING_DOMAINS);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/referring_domains", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRING_DOMAINS);
     }
 
     /**
      * Returns the metrics for the given bitlink by referrers by domain.
      * @param bitlink The bitlink for the metrics
-     * @param unit The unit of time for the clicks (either "minute", "hour", "day", "week", "month")
-     * @param units The time units to query data for. A value of -1 returns all units available.
-     * @param unitReference The most recent time for to pull metrics for (ISO-8601 timestamp). Defaults to current time.
-     * @param size The quantity of items to be returned. Defaults to 50.
+     * @param query The attributes of the units to use for the query
      * @return The response object
      * @throws IOException if there is a communication error.
      * @throws URISyntaxException if there is a format error in the URL.
      */
-    public Optional<GetMetricsByReferrersByDomainResponse> getMetricsByReferrersByDomain(String bitlink, Unit unit, int units, String unitReference, int size)
+    public Optional<GetMetricsByReferrersByDomainResponse> getMetricsByReferrersByDomain(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        QueryParameterList queryParams = getQueryParameterList(unit, units, unitReference, size);
-        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers_by_domains", bitlink), getHeaders(), queryParams, GET_METRICS_BY_REFERRERS_BY_DOMAIN);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers_by_domains", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRERS_BY_DOMAIN);
+    }
+
+    /**
+     * Returns the QR code for the given bitlin.
+     * @param bitlink The bitlink for the QR code
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetBitlinkQrCodeResponse> getQrCode(String bitlink)
+        throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/bitlinks/%s/qr", bitlink), getHeaders(), null, GET_BITLINK_QR_CODE);
     }
 }

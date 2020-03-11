@@ -22,7 +22,12 @@ The following Bitly APIs are currently supported:
 - [x] [Get Metrics for a Bitlink by Referrers (`GET /v4/bitlinks/{bitlink}/referrers`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrers)
 - [x] [Get Metrics for a Bitlink by Referring Domains (`GET /v4/bitlinks/{bitlink}/referring_domains`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferringDomains)
 - [x] [Get Metrics for a Bitlink by Referrers by Domain (`GET /v4/bitlinks/{bitlink}/referrers_by_domains`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrersByDomains)
-- [ ] **PREMIUM** [Get a QR Code for a Bitlink (`GET /v4/{bitlink}/qr`)](https://dev.bitly.com/v4/#operation/getBitlinkQRCode)
+- [x] **PREMIUM** [Get a QR Code for a Bitlink (`GET /v4/{bitlink}/qr`)](https://dev.bitly.com/v4/#operation/getBitlinkQRCode)
+
+### Groups
+
+- [x] [Retrieve Bitlinks by Group (`GET /v4/groups/{group_guid}/bitlinks`)](https://dev.bitly.com/v4/#operation/getBitlinksByGroup)
+- [x] [Retrieve Sorted Bitlinks by Group (`GET /v4/groups/{group_guid}/bitlinks/{sort}`)](https://dev.bitly.com/v4/#operation/getSortedBitlinks)
 
 ## Examples
 
@@ -68,7 +73,7 @@ Add the following dependency to include the artefact within your project:
 <dependency>
   <groupId>com.opsmatters</groupId>
   <artifactId>bitly-java-api</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
 </dependency>
 ```
 

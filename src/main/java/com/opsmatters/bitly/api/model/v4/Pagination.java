@@ -17,58 +17,68 @@
 package com.opsmatters.bitly.api.model.v4;
 
 /**
- * Represents the link clicks for a bitlink, date or metric value.
+ * Represents the attributes of a page of results.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class LinkClicks
+public class Pagination
 {
-    private String id;
-    private String date;
-    private String value;
-    private int clicks;
+    private int total;
+    private int size;
+    private String prev;
+    private int page;
+    private String next;
 
     /**
      * Default constructor.
      */
-    public LinkClicks()
+    public Pagination()
     {
     }
 
     /**
-     * Returns the bitlink for the clicks.
-     * @return The bitlink for the clicks
+     * Returns the total number of pages.
+     * @return The total number of pages
      */
-    public String getId()
+    public int getTotal()
     {
-        return id;
+        return total;
     }
 
     /**
-     * Returns the date for the clicks.
-     * @return The date for the clicks
+     * Returns the page size.
+     * @return The page size
      */
-    public String getDate()
+    public int getSize()
     {
-        return date;
+        return size;
     }
 
     /**
-     * Returns the metric value for the clicks.
-     * @return The metric value for the clicks
+     * Returns the previous page.
+     * @return The previous page
      */
-    public String getValue()
+    public String getPrev()
     {
-        return value;
+        return prev;
     }
 
     /**
-     * Returns the clicks for the link.
-     * @return The clicks for the link
+     * Returns the page number.
+     * @return The page number
      */
-    public int getClicks()
+    public int getPage()
     {
-        return clicks;
+        return page;
+    }
+
+    /**
+     * Returns the next page.
+     * @return The next page
+     */
+    public String getNext()
+    {
+        return next;
     }
 
     /**
@@ -77,11 +87,12 @@ public class LinkClicks
     @Override
     public String toString()
     {
-        return "LinkClicks ["
-            +"date="+date
-            +", value="+value
-            +", id="+id
-            +", clicks="+clicks
+        return "Pagination ["
+            +"total="+total
+            +", size="+size
+            +", prev="+prev
+            +", page="+page
+            +", next="+next
             +"]";
     }
 

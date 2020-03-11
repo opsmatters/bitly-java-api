@@ -16,28 +16,53 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
+import java.util.List;
+
 /**
- * Represents a response to shorten a bitlink.  
+ * Represents a group of bitlinks. 
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ShortenBitlinkResponse extends BitlinkResponse
+public class GetBitlinksByGroupResponse
 {
+    private Pagination pagination;
+    private List<Bitlink> links;
+
     /**
      * Default constructor.
      */
-    public ShortenBitlinkResponse()
+    public GetBitlinksByGroupResponse()
     {
     }
-    
+
+    /**
+     * Returns the pagination.
+     * @return The pagination
+     */
+    public Pagination getPagination()
+    {
+        return pagination;
+    }
+
+    /**
+     * Returns the bitlinks.
+     * @return The bitlinks
+     */
+    public List<Bitlink> getLinks()
+    {
+        return links;
+    }
+
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "ShortenBitlinkResponse ["
+        return "GetBitlinksByGroupResponse ["
             +super.toString()
+            +" pagination="+pagination
+            +" links="+links
             +"]";
     }
 }
