@@ -37,6 +37,9 @@ import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringDomainsResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkQrCodeResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinksByGroupResponse;
 import com.opsmatters.bitly.api.model.v4.GetSortedBitlinksByGroupResponse;
+import com.opsmatters.bitly.api.model.v4.GetGroupResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateGroupResponse;
+import com.opsmatters.bitly.api.model.v4.ListGroupsResponse;
 
 /**
  * Provides the types of objects to be used with v4 API calls.  
@@ -58,6 +61,9 @@ public class BitlyV4Service extends BitlyService
     protected static final Type GET_BITLINK_QR_CODE = new TypeToken<GetBitlinkQrCodeResponse>(){}.getType();
     protected static final Type GET_BITLINKS_BY_GROUP = new TypeToken<GetBitlinksByGroupResponse>(){}.getType();
     protected static final Type GET_SORTED_BITLINKS_BY_GROUP = new TypeToken<GetSortedBitlinksByGroupResponse>(){}.getType();
+    protected static final Type GET_GROUP = new TypeToken<GetGroupResponse>(){}.getType();
+    protected static final Type UPDATE_GROUP = new TypeToken<UpdateGroupResponse>(){}.getType();
+    protected static final Type LIST_GROUPS = new TypeToken<ListGroupsResponse>(){}.getType();
 
     /**
      * Constructor that takes a http context and API client.

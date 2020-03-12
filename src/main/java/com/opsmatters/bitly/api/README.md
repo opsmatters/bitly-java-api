@@ -37,4 +37,13 @@ Other operations have also been included for bitlinks:
 * getMetricsByReferrersByDomain(bitlink, query): returns the metrics for the given bitlink and query parameters.
 * getQrCode(bitlink): returns the QR code for the given bitlink.
 
+### Groups
+
+* get(groupGuid): returns the attributes of the given group.
+* update(groupGuid): updates the attributes of the given group.
+* list(organizationGuid): returns the groups for the given organization.
+* delete(groupGuid): deletes the given group.
+* getBitlinks(groupGuid, query): returns the group and query parameters.
+* getSortedBitlinks(groupGuid, sort, query): returns the group and query parameters, sorted by clicks.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>

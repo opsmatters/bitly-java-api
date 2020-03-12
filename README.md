@@ -26,6 +26,10 @@ The following Bitly APIs are currently supported:
 
 ### Groups
 
+- [x] [Retrieve Group (`GET /v4/groups/{group_guid}`)](https://dev.bitly.com/v4/#operation/getGroup)
+- [x] [Update Group (`PATCH /v4/groups/{group_guid}`)](https://dev.bitly.com/v4/#operation/updateGroup)
+- [x] [Retrieve Groups (`GET /v4/groups`)](https://dev.bitly.com/v4/#operation/getGroups)
+- [x] [Delete Group (`DELETE /v4/groups/{group_guid}`)](https://dev.bitly.com/v4/#operation/deleteGroup)
 - [x] [Retrieve Bitlinks by Group (`GET /v4/groups/{group_guid}/bitlinks`)](https://dev.bitly.com/v4/#operation/getBitlinksByGroup)
 - [x] [Retrieve Sorted Bitlinks by Group (`GET /v4/groups/{group_guid}/bitlinks/{sort}`)](https://dev.bitly.com/v4/#operation/getSortedBitlinks)
 

@@ -17,16 +17,16 @@
 package com.opsmatters.bitly.api.model.v4;
 
 /**
- * Represents a response to get a bitlink.
+ * Represents a response to get a group.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkResponse extends Bitlink
+public class GetGroupResponse extends Group
 {
     /**
      * Default constructor.
      */
-    public GetBitlinkResponse()
+    public GetGroupResponse()
     {
     }
     
@@ -36,7 +36,7 @@ public class GetBitlinkResponse extends Bitlink
     @Override
     public String toString()
     {
-        return "GetBitlinkResponse ["
+        return "GetGroupResponse ["
             +super.toString()
             +"]";
     }

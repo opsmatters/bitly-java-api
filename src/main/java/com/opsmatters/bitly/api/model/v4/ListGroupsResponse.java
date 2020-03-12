@@ -16,28 +16,41 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
+import java.util.List;
+
 /**
  * Represents a response to get a bitlink.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetBitlinkResponse extends Bitlink
+public class ListGroupsResponse
 {
+    private List<Group> groups;
+
     /**
      * Default constructor.
      */
-    public GetBitlinkResponse()
+    public ListGroupsResponse()
     {
     }
-    
+
+    /**
+     * Returns the list of groups.
+     * @return The list of groups
+     */
+    public List<Group> getGroups()
+    {
+        return groups;
+    }
+
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "GetBitlinkResponse ["
-            +super.toString()
+        return "ListGroupsResponse ["
+            +"groups="+groups
             +"]";
     }
 }
