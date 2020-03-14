@@ -28,8 +28,15 @@ import com.opsmatters.bitly.api.model.v4.GetGroupResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateGroupRequest;
 import com.opsmatters.bitly.api.model.v4.UpdateGroupResponse;
 import com.opsmatters.bitly.api.model.v4.ListGroupsResponse;
+import com.opsmatters.bitly.api.model.v4.GetGroupTagsResponse;
+import com.opsmatters.bitly.api.model.v4.GetShortenCountsResponse;
+import com.opsmatters.bitly.api.model.v4.GetGroupPreferencesResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateGroupPreferencesRequest;
+import com.opsmatters.bitly.api.model.v4.UpdateGroupPreferencesResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinksByGroupResponse;
 import com.opsmatters.bitly.api.model.v4.GetSortedBitlinksByGroupResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByCountriesResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringNetworksResponse;
 
 /**
  * The set of operations used for bitlink groups.
@@ -101,6 +108,61 @@ public class GroupsService extends BitlyV4Service
     }
 
     /**
+     * Returns the tags for the given group.
+     * @param groupGuid The GUID of the group with the tags
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetGroupTagsResponse> getTags(String groupGuid) throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/groups/%s/tags", groupGuid), getHeaders(), null, GET_GROUP_TAGS);
+    }
+
+    /**
+     * Returns the shorten counts for the given group.
+     * @param groupGuid The guid for the group
+     * @param query The attributes of the units to use for the query
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetShortenCountsResponse> getShortenCounts(String groupGuid, UnitQuery query)
+        throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/groups/%s/shorten_counts", groupGuid), 
+            getHeaders(), getQueryParameterList(query), GET_SHORTEN_COUNTS);
+    }
+
+    /**
+     * Returns the preferences for the given group.
+     * @param groupGuid The GUID of the group with the preferences
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetGroupPreferencesResponse> getPreferences(String groupGuid) throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/groups/%s/preferences", groupGuid),
+            getHeaders(), null, GET_GROUP_PREFERENCES);
+    }
+
+    /**
+     * Updates the preferences of the given group.
+     * @param groupGuid The GUID of the group to be updated
+     * @param request The request containing the preferences of the group to be updated
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<UpdateGroupPreferencesResponse> updatePreferences(String groupGuid, UpdateGroupPreferencesRequest request)
+        throws IOException, URISyntaxException
+    {
+        return HTTP.PATCH(String.format("/v4/groups/%s/preferences", groupGuid), request,
+            getHeaders(), null, UPDATE_GROUP_PREFERENCES);
+    }
+
+    /**
      * Returns the bitlinks for the given group.
      * @param groupGuid The guid for the group
      * @param query The attributes of the bitlinks to use for the query
@@ -129,5 +191,34 @@ public class GroupsService extends BitlyV4Service
     {
         return HTTP.GET(String.format("/v4/groups/%s/bitlinks/%s", groupGuid, sort.value()), 
             getHeaders(), getQueryParameterList(query), GET_SORTED_BITLINKS_BY_GROUP);
+    }
+
+    /**
+     * Returns the metrics for the given group by countries.
+     * @param groupGuid The GUID of the group for the metrics
+     * @param query The attributes of the units to use for the query
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetMetricsByCountriesResponse> getMetricsByCountries(String groupGuid, UnitQuery query)
+        throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/groups/%s/countries", groupGuid), 
+            getHeaders(), getQueryParameterList(query), GET_METRICS_BY_COUNTRIES);
+    }
+
+    /**
+     * Returns the metrics for the given group by referring networks.
+     * @param groupGuid The GUID of the group for the metrics
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     * @throws URISyntaxException if there is a format error in the URL.
+     */
+    public Optional<GetMetricsByReferringNetworksResponse> getMetricsByReferringNetworks(String groupGuid)
+        throws IOException, URISyntaxException
+    {
+        return HTTP.GET(String.format("/v4/groups/%s/referring_networks", groupGuid), 
+            getHeaders(), null, GET_METRICS_BY_REFERRING_NETWORKS);
     }
 }

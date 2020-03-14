@@ -17,17 +17,38 @@
 package com.opsmatters.bitly.api.model.v4;
 
 /**
- * Represents a response with the clicks for a bitlink by countries.
+ * Represents a named metric.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByCountriesResponse extends GetClicksResponse
+public class Metric
 {
+    private String key;
+    private int value;
+
     /**
      * Default constructor.
      */
-    public GetMetricsByCountriesResponse()
+    public Metric()
     {
+    }
+
+    /**
+     * Returns the key for the metric.
+     * @return The key for the metric
+     */
+    public String getKey()
+    {
+        return key;
+    }
+
+    /**
+     * Returns the value for the metric.
+     * @return The value for the metric
+     */
+    public int getValue()
+    {
+        return value;
     }
 
     /**
@@ -36,8 +57,10 @@ public class GetMetricsByCountriesResponse extends GetClicksResponse
     @Override
     public String toString()
     {
-        return "GetMetricsByCountriesResponse ["
-            +super.toString()
+        return "Metric ["
+            +"key="+key
+            +", value="+value
             +"]";
     }
+
 }

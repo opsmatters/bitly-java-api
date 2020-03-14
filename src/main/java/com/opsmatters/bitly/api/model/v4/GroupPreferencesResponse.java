@@ -16,18 +16,37 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
+import com.google.gson.annotations.SerializedName;
+
 /**
- * Represents a response with the clicks for a bitlink by countries.
+ * Represents a response containing preferences for a group.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByCountriesResponse extends GetClicksResponse
+public class GroupPreferencesResponse
 {
+    @SerializedName("group_guid")
+    private String groupGuid;
+
+    @SerializedName("domain_preference")
+    private String domainPreference;
+
     /**
-     * Default constructor.
+     * Returns the GUID of the group.
+     * @return The GUID of the group
      */
-    public GetMetricsByCountriesResponse()
+    public String getGroupGuid()
     {
+        return groupGuid;
+    }
+
+    /**
+     * Returns the domain preference of the group.
+     * @return The domain preference of the group
+     */
+    public String getDomainPreference()
+    {
+        return domainPreference;
     }
 
     /**
@@ -36,8 +55,9 @@ public class GetMetricsByCountriesResponse extends GetClicksResponse
     @Override
     public String toString()
     {
-        return "GetMetricsByCountriesResponse ["
-            +super.toString()
+        return "GroupPreferencesResponse ["
+            +" groupGuid="+groupGuid
+            +", domainPreference="+domainPreference
             +"]";
     }
 }

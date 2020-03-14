@@ -16,14 +16,12 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
-import java.util.List;
-
 /**
  * Represents a response with the clicks for a bitlink by referring domains.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByReferringDomainsResponse extends MetricsResponse
+public class GetMetricsByReferringDomainsResponse extends GetClicksResponse
 {
     /**
      * Default constructor.

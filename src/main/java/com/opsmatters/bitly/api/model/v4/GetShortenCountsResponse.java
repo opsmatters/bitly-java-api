@@ -17,16 +17,16 @@
 package com.opsmatters.bitly.api.model.v4;
 
 /**
- * Represents a response with the clicks for a bitlink by countries.
+ * Represents a response containing counts for shortened links.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByCountriesResponse extends GetClicksResponse
+public class GetShortenCountsResponse extends GetMetricsResponse
 {
     /**
      * Default constructor.
      */
-    public GetMetricsByCountriesResponse()
+    public GetShortenCountsResponse()
     {
     }
 
@@ -36,7 +36,7 @@ public class GetMetricsByCountriesResponse extends GetClicksResponse
     @Override
     public String toString()
     {
-        return "GetMetricsByCountriesResponse ["
+        return "GetShortenCountsResponse ["
             +super.toString()
             +"]";
     }

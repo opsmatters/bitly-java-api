@@ -147,7 +147,8 @@ public class BitlinksService extends BitlyV4Service
     public Optional<GetBitlinkClicksResponse> getClicks(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks", bitlink), getHeaders(), getQueryParameterList(query), GET_BITLINK_CLICKS);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks", bitlink),
+            getHeaders(), getQueryParameterList(query), GET_BITLINK_CLICKS);
     }
 
     /**
@@ -161,7 +162,8 @@ public class BitlinksService extends BitlyV4Service
     public Optional<GetBitlinkClicksSummaryResponse> getClicksSummary(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks/summary", bitlink), getHeaders(), getQueryParameterList(query), GET_BITLINK_CLICKS_SUMMARY);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/clicks/summary", bitlink),
+            getHeaders(), getQueryParameterList(query), GET_BITLINK_CLICKS_SUMMARY);
     }
 
     /**
@@ -175,7 +177,8 @@ public class BitlinksService extends BitlyV4Service
     public Optional<GetMetricsByCountriesResponse> getMetricsByCountries(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        return HTTP.GET(String.format("/v4/bitlinks/%s/countries", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_COUNTRIES);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/countries", bitlink),
+            getHeaders(), getQueryParameterList(query), GET_METRICS_BY_COUNTRIES);
     }
 
     /**
@@ -189,7 +192,8 @@ public class BitlinksService extends BitlyV4Service
     public Optional<GetMetricsByReferrersResponse> getMetricsByReferrers(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRERS);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers", bitlink),
+            getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRERS);
     }
 
     /**
@@ -203,7 +207,8 @@ public class BitlinksService extends BitlyV4Service
     public Optional<GetMetricsByReferringDomainsResponse> getMetricsByReferringDomains(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        return HTTP.GET(String.format("/v4/bitlinks/%s/referring_domains", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRING_DOMAINS);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/referring_domains", bitlink),
+            getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRING_DOMAINS);
     }
 
     /**
@@ -217,7 +222,8 @@ public class BitlinksService extends BitlyV4Service
     public Optional<GetMetricsByReferrersByDomainResponse> getMetricsByReferrersByDomain(String bitlink, UnitQuery query)
         throws IOException, URISyntaxException
     {
-        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers_by_domains", bitlink), getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRERS_BY_DOMAIN);
+        return HTTP.GET(String.format("/v4/bitlinks/%s/referrers_by_domains", bitlink),
+            getHeaders(), getQueryParameterList(query), GET_METRICS_BY_REFERRERS_BY_DOMAIN);
     }
 
     /**

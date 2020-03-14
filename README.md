@@ -30,8 +30,14 @@ The following Bitly APIs are currently supported:
 - [x] [Update Group (`PATCH /v4/groups/{group_guid}`)](https://dev.bitly.com/v4/#operation/updateGroup)
 - [x] [Retrieve Groups (`GET /v4/groups`)](https://dev.bitly.com/v4/#operation/getGroups)
 - [x] [Delete Group (`DELETE /v4/groups/{group_guid}`)](https://dev.bitly.com/v4/#operation/deleteGroup)
+- [x] [Retrieve Tags by Group (`GET /v4/groups/{group_guid}/tags`)](https://dev.bitly.com/v4/#operation/getGroupTags)
+- [x] [Retrieve Group Shorten Counts (`GET /v4/groups/{group_guid}/shorten_counts`)](https://dev.bitly.com/v4/#operation/getGroupShortenCounts)
+- [x] [Retrieve Group Preferences (`GET /v4/groups/{group_guid}/preferences`)](https://dev.bitly.com/v4/#operation/getGroupPreferences)
+- [x] [Update Group Preferences (`PATCH /v4/groups/{group_guid}/preferences`)](https://dev.bitly.com/v4/#operation/updateGroupPreferences)
 - [x] [Retrieve Bitlinks by Group (`GET /v4/groups/{group_guid}/bitlinks`)](https://dev.bitly.com/v4/#operation/getBitlinksByGroup)
 - [x] [Retrieve Sorted Bitlinks by Group (`GET /v4/groups/{group_guid}/bitlinks/{sort}`)](https://dev.bitly.com/v4/#operation/getSortedBitlinks)
+- [x] [Get Click Metrics for a Group by Countries (`GET /v4/groups/{group_guid}/countries`)](https://dev.bitly.com/v4/#operation/getGroupMetricsByCountries)
+- [x] [Get Click Metrics for a Group by Referring Networks (`GET /v4/groups/{group_guid}/referring_networks`)](https://dev.bitly.com/v4/#operation/GetGroupMetricsByReferringNetworks)
 
 ## Examples
 

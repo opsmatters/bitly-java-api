@@ -16,18 +16,24 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
+import java.util.List;
+
 /**
- * Represents a response with the clicks for a bitlink by countries.
+ * Represents a response containing named metrics.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByCountriesResponse extends GetClicksResponse
+public class GetMetricsResponse extends FacetUnitsResponse
 {
+    private List<Metric> metrics;
+
     /**
-     * Default constructor.
+     * Returns the metrics.
+     * @return The metrics
      */
-    public GetMetricsByCountriesResponse()
+    public List<Metric> getMetrics()
     {
+        return metrics;
     }
 
     /**
@@ -36,8 +42,9 @@ public class GetMetricsByCountriesResponse extends GetClicksResponse
     @Override
     public String toString()
     {
-        return "GetMetricsByCountriesResponse ["
+        return "GetMetricsResponse ["
             +super.toString()
+            +", metrics="+metrics
             +"]";
     }
 }

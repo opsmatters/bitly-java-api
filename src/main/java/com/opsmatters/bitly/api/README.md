@@ -40,10 +40,16 @@ Other operations have also been included for bitlinks:
 ### Groups
 
 * get(groupGuid): returns the attributes of the given group.
-* update(groupGuid): updates the attributes of the given group.
+* update(groupGuid, object): updates the attributes of the given group.
 * list(organizationGuid): returns the groups for the given organization.
 * delete(groupGuid): deletes the given group.
+* getTags(groupGuid): returns the tags for the given group.
+* getShortenCounts(groupGuid, query): returns the counts of shortened links for the given group.
+* getPreferences(groupGuid): returns the preferences for the given group.
+* updatePreferences(groupGuid, object): updates the preferences for the given group.
 * getBitlinks(groupGuid, query): returns the group and query parameters.
 * getSortedBitlinks(groupGuid, sort, query): returns the group and query parameters, sorted by clicks.
+* getMetricsByCountries(group, query): returns the metrics for the given group and query parameters.
+* getMetricsByReferringNetworks(group): returns the metrics for the given group.
 
 <sub>Copyright (c) 2020 OpsMatters</sub>

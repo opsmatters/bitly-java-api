@@ -19,43 +19,38 @@ package com.opsmatters.bitly.api.model.v4;
 import java.util.List;
 
 /**
- * Represents a response with the clicks for metrics.
+ * Represents a response to get the tags for a group.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class MetricsResponse
+public class GetGroupTagsResponse
 {
-    private String facet;
-    private List<LinkClicks> metrics;
+    private List<String> tags;
 
     /**
-     * Returns the facet for the metrics.
-     * @return The facet for the metrics
+     * Default constructor.
      */
-    public String getFacet()
+    public GetGroupTagsResponse()
     {
-        return facet;
     }
 
     /**
-     * Returns the link clicks for the metrics.
-     * @return The link clicks for the metrics
+     * Returns the tags for the group.
+     * @return The tags for the group
      */
-    public List<LinkClicks> getMetrics()
+    public List<String> getTags()
     {
-        return metrics;
+        return tags;
     }
-
+    
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "MetricsResponse ["
-            +super.toString()
-            +", facet="+facet
-            +", metrics="+metrics
+        return "GetGroupTagsResponse ["
+            +"tags="+tags
             +"]";
     }
 }

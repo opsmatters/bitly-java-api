@@ -24,10 +24,8 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByReferrersByDomainResponse extends UnitsResponse
+public class GetMetricsByReferrersByDomainResponse extends FacetUnitsResponse
 {
-    private String facet;
-
     @SerializedName("referrers_by_domain")
     private List<NetworkReferrers> referrersByDomain;
 
@@ -36,15 +34,6 @@ public class GetMetricsByReferrersByDomainResponse extends UnitsResponse
      */
     public GetMetricsByReferrersByDomainResponse()
     {
-    }
-
-    /**
-     * Returns the facet for the metrics.
-     * @return The facet for the metrics
-     */
-    public String getFacet()
-    {
-        return facet;
     }
 
     /**
@@ -64,7 +53,6 @@ public class GetMetricsByReferrersByDomainResponse extends UnitsResponse
     {
         return "GetMetricsByReferrersByDomainResponse ["
             +super.toString()
-            +", facet="+facet
             +", referrersByDomain="+referrersByDomain
             +"]";
     }

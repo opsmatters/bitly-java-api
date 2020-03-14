@@ -17,17 +17,21 @@
 package com.opsmatters.bitly.api.model.v4;
 
 /**
- * Represents a response with the clicks for a bitlink by countries.
+ * Represents a response with a facet and units.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GetMetricsByCountriesResponse extends GetClicksResponse
+public class FacetUnitsResponse extends UnitsResponse
 {
+    private String facet;
+
     /**
-     * Default constructor.
+     * Returns the facet for the metrics.
+     * @return The facet for the metrics
      */
-    public GetMetricsByCountriesResponse()
+    public String getFacet()
     {
+        return facet;
     }
 
     /**
@@ -36,8 +40,9 @@ public class GetMetricsByCountriesResponse extends GetClicksResponse
     @Override
     public String toString()
     {
-        return "GetMetricsByCountriesResponse ["
+        return "FacetUnitsResponse ["
             +super.toString()
+            +", facet="+facet
             +"]";
     }
 }
