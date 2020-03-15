@@ -30,14 +30,12 @@ import com.opsmatters.bitly.api.model.v4.ExpandBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkClicksSummaryResponse;
-import com.opsmatters.bitly.api.model.v4.GetMetricsByCountriesResponse;
-import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersResponse;
-import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersByDomainResponse;
-import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringDomainsResponse;
-import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringNetworksResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinkQrCodeResponse;
 import com.opsmatters.bitly.api.model.v4.GetBitlinksByGroupResponse;
 import com.opsmatters.bitly.api.model.v4.GetSortedBitlinksByGroupResponse;
+import com.opsmatters.bitly.api.model.v4.GetCustomBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.CreateCustomBitlinkResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateCustomBitlinkResponse;
 import com.opsmatters.bitly.api.model.v4.GetGroupResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateGroupResponse;
 import com.opsmatters.bitly.api.model.v4.ListGroupsResponse;
@@ -47,6 +45,12 @@ import com.opsmatters.bitly.api.model.v4.GetGroupPreferencesResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateGroupPreferencesResponse;
 import com.opsmatters.bitly.api.model.v4.GetOrganizationResponse;
 import com.opsmatters.bitly.api.model.v4.ListOrganizationsResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByCountriesResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersByDomainResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringDomainsResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringNetworksResponse;
+import com.opsmatters.bitly.api.model.v4.GetMetricsByDestinationResponse;
 
 /**
  * Provides the types of objects to be used with v4 API calls.  
@@ -61,14 +65,12 @@ public class BitlyV4Service extends BitlyService
     protected static final Type UPDATE_BITLINK = new TypeToken<UpdateBitlinkResponse>(){}.getType();
     protected static final Type GET_BITLINK_CLICKS = new TypeToken<GetBitlinkClicksResponse>(){}.getType();
     protected static final Type GET_BITLINK_CLICKS_SUMMARY = new TypeToken<GetBitlinkClicksSummaryResponse>(){}.getType();
-    protected static final Type GET_METRICS_BY_COUNTRIES = new TypeToken<GetMetricsByCountriesResponse>(){}.getType();
-    protected static final Type GET_METRICS_BY_REFERRERS = new TypeToken<GetMetricsByReferrersResponse>(){}.getType();
-    protected static final Type GET_METRICS_BY_REFERRERS_BY_DOMAIN = new TypeToken<GetMetricsByReferrersByDomainResponse>(){}.getType();
-    protected static final Type GET_METRICS_BY_REFERRING_DOMAINS = new TypeToken<GetMetricsByReferringDomainsResponse>(){}.getType();
-    protected static final Type GET_METRICS_BY_REFERRING_NETWORKS = new TypeToken<GetMetricsByReferringNetworksResponse>(){}.getType();
     protected static final Type GET_BITLINK_QR_CODE = new TypeToken<GetBitlinkQrCodeResponse>(){}.getType();
     protected static final Type GET_BITLINKS_BY_GROUP = new TypeToken<GetBitlinksByGroupResponse>(){}.getType();
     protected static final Type GET_SORTED_BITLINKS_BY_GROUP = new TypeToken<GetSortedBitlinksByGroupResponse>(){}.getType();
+    protected static final Type GET_CUSTOM_BITLINK = new TypeToken<GetCustomBitlinkResponse>(){}.getType();
+    protected static final Type CREATE_CUSTOM_BITLINK = new TypeToken<CreateCustomBitlinkResponse>(){}.getType();
+    protected static final Type UPDATE_CUSTOM_BITLINK = new TypeToken<UpdateCustomBitlinkResponse>(){}.getType();
     protected static final Type GET_GROUP = new TypeToken<GetGroupResponse>(){}.getType();
     protected static final Type UPDATE_GROUP = new TypeToken<UpdateGroupResponse>(){}.getType();
     protected static final Type LIST_GROUPS = new TypeToken<ListGroupsResponse>(){}.getType();
@@ -78,6 +80,12 @@ public class BitlyV4Service extends BitlyService
     protected static final Type UPDATE_GROUP_PREFERENCES = new TypeToken<UpdateGroupPreferencesResponse>(){}.getType();
     protected static final Type GET_ORGANIZATION = new TypeToken<GetOrganizationResponse>(){}.getType();
     protected static final Type LIST_ORGANIZATIONS = new TypeToken<ListOrganizationsResponse>(){}.getType();
+    protected static final Type GET_METRICS_BY_COUNTRIES = new TypeToken<GetMetricsByCountriesResponse>(){}.getType();
+    protected static final Type GET_METRICS_BY_REFERRERS = new TypeToken<GetMetricsByReferrersResponse>(){}.getType();
+    protected static final Type GET_METRICS_BY_REFERRERS_BY_DOMAIN = new TypeToken<GetMetricsByReferrersByDomainResponse>(){}.getType();
+    protected static final Type GET_METRICS_BY_REFERRING_DOMAINS = new TypeToken<GetMetricsByReferringDomainsResponse>(){}.getType();
+    protected static final Type GET_METRICS_BY_REFERRING_NETWORKS = new TypeToken<GetMetricsByReferringNetworksResponse>(){}.getType();
+    protected static final Type GET_METRICS_BY_DESTINATION = new TypeToken<GetMetricsByDestinationResponse>(){}.getType();
 
     /**
      * Constructor that takes a http context and API client.

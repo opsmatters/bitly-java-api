@@ -42,6 +42,13 @@ public class Group
     private String organizationGuid;
 
     /**
+     * Default constructor.
+     */
+    public Group()
+    {
+    }
+
+    /**
      * Returns the GUID of the group.
      * @return The GUID of the group
      */

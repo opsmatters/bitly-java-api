@@ -24,6 +24,13 @@ The following Bitly APIs are currently supported:
 - [x] [Get Metrics for a Bitlink by Referrers by Domain (`GET /v4/bitlinks/{bitlink}/referrers_by_domains`)](https://dev.bitly.com/v4/#operation/getMetricsForBitlinkByReferrersByDomains)
 - [x] **PREMIUM** [Get a QR Code for a Bitlink (`GET /v4/{bitlink}/qr`)](https://dev.bitly.com/v4/#operation/getBitlinkQRCode)
 
+### Custom Bitlinks
+
+- [x] [Create Custom Bitlink (`POST /v4/custom_bitlinks`)](https://dev.bitly.com/v4/#operation/addCustomBitlink)
+- [x] **PREMIUM** [Retrieve Custom Bitlink (`GET /v4/custom_bitlinks/{custom_bitlink}`)](https://dev.bitly.com/v4/#operation/getCustomBitlink)
+- [x] **PREMIUM** [Update Custom Bitlink (`PATCH /v4/custom_bitlink/{custom_bitlink}`)](https://dev.bitly.com/v4/#operation/updateCustomBitlink)
+- [x] **PREMIUM** [Get Metrics for a Custom Bitlink by Destination (`GET /v4/custom_bitlinks/{custom_bitlink}/clicks_by_destination`)](https://dev.bitly.com/v4/#operation/getCustomBitlinkMetricsByDestination)
+
 ### Groups
 
 - [x] [Retrieve Group (`GET /v4/groups/{group_guid}`)](https://dev.bitly.com/v4/#operation/getGroup)

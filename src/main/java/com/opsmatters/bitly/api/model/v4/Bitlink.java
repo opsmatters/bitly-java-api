@@ -51,6 +51,13 @@ public class Bitlink
     private String createdBy;
 
     /**
+     * Default constructor.
+     */
+    public Bitlink()
+    {
+    }
+
+    /**
      * Returns the id of the bitlink.
      * @return The id of the bitlink
      */

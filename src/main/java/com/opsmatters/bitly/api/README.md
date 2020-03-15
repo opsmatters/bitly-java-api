@@ -12,6 +12,7 @@ Bitly client = new Bitly("<YOUR_ACCESS_TOKEN>");
 ```
 
 ### Bitlinks
+
 To shorten a URL and create a bitlink, first instantiate the request object and then pass it to the "shorten" operation:
 ```
 CreateBitlinkRequest request = CreateBitlinkRequest.builder().longUrl(longUrl).build();
@@ -31,11 +32,18 @@ Other operations have also been included for bitlinks:
 * update(bitlink, object): updates the attributes of the given bitlink using the given object.
 * getClicks(bitlink, query): returns the clicks for the given bitlink and query parameters.
 * getClicksSummary(bitlink, query): returns the clicks summary for the given bitlink and query parameters.
-* getMetricsByCountries(bitlink, query): returns the metrics for the given bitlink and query parameters.
-* getMetricsByReferrers(bitlink, query): returns the metrics for the given bitlink and query parameters.
-* getMetricsByReferringDomains(bitlink, query): returns the metrics for the given bitlink and query parameters.
-* getMetricsByReferrersByDomain(bitlink, query): returns the metrics for the given bitlink and query parameters.
+* getMetricsByCountries(bitlink, query): returns the clicks for the given bitlink and query parameters.
+* getMetricsByReferrers(bitlink, query): returns the clicks for the given bitlink and query parameters.
+* getMetricsByReferringDomains(bitlink, query): returns the clicks for the given bitlink and query parameters.
+* getMetricsByReferrersByDomain(bitlink, query): returns the network metrics for the given bitlink and query parameters.
 * getQrCode(bitlink): returns the QR code for the given bitlink.
+
+### Custom Bitlinks
+
+* create(object): creates a new custom bitlink.
+* get(bitlink): returns the attributes of the given custom bitlink.
+* update(bitlink, object): updates the attributes of the given custom bitlink using the given object.
+* getMetricsByDestination(bitlink): returns the clicks for the given custom bitlink.
 
 ### Groups
 
@@ -49,8 +57,8 @@ Other operations have also been included for bitlinks:
 * updatePreferences(groupGuid, object): updates the preferences for the given group.
 * getBitlinks(groupGuid, query): returns the group and query parameters.
 * getSortedBitlinks(groupGuid, sort, query): returns the group and query parameters, sorted by clicks.
-* getMetricsByCountries(group, query): returns the metrics for the given group and query parameters.
-* getMetricsByReferringNetworks(group): returns the metrics for the given group.
+* getMetricsByCountries(group, query): returns the clicks for the given group and query parameters.
+* getMetricsByReferringNetworks(group): returns the clicks for the given group.
 
 ### Organizations
 

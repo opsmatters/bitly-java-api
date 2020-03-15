@@ -46,6 +46,13 @@ public class Organization
     private String tierFamily;
 
     /**
+     * Default constructor.
+     */
+    public Organization()
+    {
+    }
+
+    /**
      * Returns the GUID of the organization.
      * @return The GUID of the organization
      */

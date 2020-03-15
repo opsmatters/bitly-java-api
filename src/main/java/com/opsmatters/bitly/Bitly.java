@@ -19,6 +19,7 @@ package com.opsmatters.bitly;
 import java.util.logging.Logger;
 import com.opsmatters.bitly.api.services.HttpContext;
 import com.opsmatters.bitly.api.services.v4.BitlinkService;
+import com.opsmatters.bitly.api.services.v4.CustomBitlinkService;
 import com.opsmatters.bitly.api.services.v4.GroupService;
 import com.opsmatters.bitly.api.services.v4.OrganizationService;
 
@@ -54,6 +55,15 @@ public class Bitly
     public BitlinkService bitlinks()
     {
         return new BitlinkService(accessToken, httpContext);
+    }
+
+    /**
+     * Returns the custom bitlink service.
+     * @return The custom bitlink service
+     */
+    public CustomBitlinkService customBitlinks()
+    {
+        return new CustomBitlinkService(accessToken, httpContext);
     }
 
     /**
