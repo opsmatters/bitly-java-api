@@ -52,6 +52,13 @@ The following Bitly APIs are currently supported:
 - [x] [Retrieve Organization (`GET /v4/organizations/{organization_guid}`)](https://dev.bitly.com/v4/#operation/getOrganization)
 - [x] [Retrieve Organization Shorten Counts (`GET /v4/organizations/{organization_guid}/shorten_counts`)](https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts)
 
+### Campaigns
+
+- [x] **PREMIUM** [Retrieve Campaign (`GET /v4/campaigns/{campaign_guid}`)](https://dev.bitly.com/v4/#operation/getCampaign)
+- [x] **PREMIUM** [Create Campaign (`POST /v4/campaigns`)](https://dev.bitly.com/v4/#operation/createCampaign)
+- [x] **PREMIUM** [Update Campaign (`PATCH /v4/campaigns/{campaign_guid}`)](https://dev.bitly.com/v4/#operation/updateCampaign)
+- [x] **PREMIUM** [Retrieve Campaigns (`GET /v4/campaigns`)](https://dev.bitly.com/v4/#operation/getCampaigns)
+
 ## Examples
 
 A detailed set of examples of the usage of each of the APIs can be found on [the API site](src/main/java/com/opsmatters/bitly/api).

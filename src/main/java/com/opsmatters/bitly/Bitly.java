@@ -22,6 +22,7 @@ import com.opsmatters.bitly.api.services.v4.BitlinkService;
 import com.opsmatters.bitly.api.services.v4.CustomBitlinkService;
 import com.opsmatters.bitly.api.services.v4.GroupService;
 import com.opsmatters.bitly.api.services.v4.OrganizationService;
+import com.opsmatters.bitly.api.services.v4.CampaignService;
 
 /**
  * Client used to invoke Bitly operations using the v4 REST API.
@@ -82,5 +83,14 @@ public class Bitly
     public OrganizationService organizations()
     {
         return new OrganizationService(accessToken, httpContext);
+    }
+
+    /**
+     * Returns the campgaign service.
+     * @return The campgaign service
+     */
+    public CampaignService campaigns()
+    {
+        return new CampaignService(accessToken, httpContext);
     }
 }

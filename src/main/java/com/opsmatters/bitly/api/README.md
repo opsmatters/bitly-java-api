@@ -66,4 +66,11 @@ Other operations have also been included for bitlinks:
 * list(): returns the list of organizations.
 * getShortenCounts(organizationGuid, query): returns the counts of shortened links for the given organization.
 
+### Campaigns
+
+* get(campaignGuid): returns the attributes of the given campaign.
+* create(object): creates a new campaign.
+* update(campaignGuid, object): updates the attributes of the given campaign.
+* list(groupGuid): returns the list of campaigns for the given group.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>

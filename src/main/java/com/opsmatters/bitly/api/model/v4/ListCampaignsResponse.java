@@ -19,28 +19,28 @@ package com.opsmatters.bitly.api.model.v4;
 import java.util.List;
 
 /**
- * Represents a response to get a list of organizations.
+ * Represents a response to get a list of campaigns.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ListOrganizationsResponse
+public class ListCampaignsResponse
 {
-    private List<Organization> organizations;
+    private List<Campaign> campaigns;
 
     /**
      * Default constructor.
      */
-    public ListOrganizationsResponse()
+    public ListCampaignsResponse()
     {
     }
 
     /**
-     * Returns the list of organizations.
-     * @return The list of organizations
+     * Returns the list of campaigns.
+     * @return The list of campaigns
      */
-    public List<Organization> getOrganizations()
+    public List<Campaign> getCampaigns()
     {
-        return organizations;
+        return campaigns;
     }
 
     /**
@@ -49,8 +49,8 @@ public class ListOrganizationsResponse
     @Override
     public String toString()
     {
-        return "ListOrganizationsResponse ["
-            +"organizations="+organizations
+        return "ListCampaignsResponse ["
+            +"campaigns="+campaigns
             +"]";
     }
 }

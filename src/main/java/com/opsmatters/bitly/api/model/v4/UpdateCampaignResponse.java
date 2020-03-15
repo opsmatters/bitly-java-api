@@ -16,41 +16,28 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
-import java.util.List;
-
 /**
- * Represents a response to get a list of organizations.
+ * Represents a response to update a campaign.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ListOrganizationsResponse
+public class UpdateCampaignResponse extends Campaign
 {
-    private List<Organization> organizations;
-
     /**
      * Default constructor.
      */
-    public ListOrganizationsResponse()
+    public UpdateCampaignResponse()
     {
     }
-
-    /**
-     * Returns the list of organizations.
-     * @return The list of organizations
-     */
-    public List<Organization> getOrganizations()
-    {
-        return organizations;
-    }
-
+    
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "ListOrganizationsResponse ["
-            +"organizations="+organizations
+        return "UpdateCampaignResponse ["
+            +super.toString()
             +"]";
     }
 }

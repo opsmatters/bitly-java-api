@@ -20,7 +20,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import com.google.common.base.Optional;
 import com.opsmatters.bitly.api.services.HttpContext;
-import com.opsmatters.bitly.api.services.QueryParameterList;
 import com.opsmatters.bitly.api.model.v4.UnitQuery;
 import com.opsmatters.bitly.api.model.v4.GetOrganizationResponse;
 import com.opsmatters.bitly.api.model.v4.ListOrganizationsResponse;
