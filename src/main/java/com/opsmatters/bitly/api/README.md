@@ -85,4 +85,8 @@ Other operations have also been included for bitlinks:
 * get(): returns the attributes of the current authenticated user.
 * update(object): updates the attributes of the current authenticated user.
 
+### Branded Short Domains (BSDs)
+
+* list(): returns the list of BSDs.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>

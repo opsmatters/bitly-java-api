@@ -71,6 +71,10 @@ The following Bitly APIs are currently supported:
 - [x] [Retrieve User (`GET /v4/user`)](https://dev.bitly.com/v4/#operation/getUser)
 - [x] [Update User (`PATCH /v4/user`)](https://dev.bitly.com/v4/#operation/updateUser)
 
+### BSDs (Branded Short Domains)
+
+- [x] [Retrieve BSDs (`GET /v4/bsds`)](https://dev.bitly.com/v4/#operation/getBSDs)
+
 ## Examples
 
 A detailed set of examples of the usage of each of the APIs can be found on [the API site](src/main/java/com/opsmatters/bitly/api).
