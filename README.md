@@ -59,6 +59,13 @@ The following Bitly APIs are currently supported:
 - [x] **PREMIUM** [Update Campaign (`PATCH /v4/campaigns/{campaign_guid}`)](https://dev.bitly.com/v4/#operation/updateCampaign)
 - [x] **PREMIUM** [Retrieve Campaigns (`GET /v4/campaigns`)](https://dev.bitly.com/v4/#operation/getCampaigns)
 
+### Campaign Channels
+
+- [x] **PREMIUM** [Retrieve Channel (`GET /v4/channels/{channel_guid}`)](https://dev.bitly.com/v4/#operation/getChannel)
+- [x] **PREMIUM** [Create Channel (`POST /v4/channels`)](https://dev.bitly.com/v4/#operation/createChannel)
+- [x] **PREMIUM** [Update Channel (`PATCH /v4/channels/{channel_guid}`)](https://dev.bitly.com/v4/#operation/updateChannel)
+- [x] **PREMIUM** [Retrieve Channels (`GET /v4/channels`)](https://dev.bitly.com/v4/#operation/getChannels)
+
 ## Examples
 
 A detailed set of examples of the usage of each of the APIs can be found on [the API site](src/main/java/com/opsmatters/bitly/api).

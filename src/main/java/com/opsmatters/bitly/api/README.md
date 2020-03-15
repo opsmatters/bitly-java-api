@@ -73,4 +73,11 @@ Other operations have also been included for bitlinks:
 * update(campaignGuid, object): updates the attributes of the given campaign.
 * list(groupGuid): returns the list of campaigns for the given group.
 
+### Campaign Channels
+
+* get(channelGuid): returns the attributes of the given campaign channel.
+* create(object): creates a new campaign channel.
+* update(channelGuid, object): updates the attributes of the given campaign channel.
+* list(groupGuid, campaignGuid): returns the list of campaign channels for the given group and campaign.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>
