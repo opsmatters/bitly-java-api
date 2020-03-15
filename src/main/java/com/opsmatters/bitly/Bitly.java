@@ -26,6 +26,7 @@ import com.opsmatters.bitly.api.services.v4.CampaignService;
 import com.opsmatters.bitly.api.services.v4.CampaignChannelService;
 import com.opsmatters.bitly.api.services.v4.UserService;
 import com.opsmatters.bitly.api.services.v4.BsdService;
+import com.opsmatters.bitly.api.services.v4.AppService;
 
 /**
  * Client used to invoke Bitly operations using the v4 REST API.
@@ -122,5 +123,14 @@ public class Bitly
     public BsdService bsds()
     {
         return new BsdService(accessToken, httpContext);
+    }
+
+    /**
+     * Returns the app service.
+     * @return The app service
+     */
+    public AppService apps()
+    {
+        return new AppService(accessToken, httpContext);
     }
 }

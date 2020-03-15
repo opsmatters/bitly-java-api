@@ -89,4 +89,8 @@ Other operations have also been included for bitlinks:
 
 * list(): returns the list of BSDs.
 
+### OAuth Apps
+
+* get(clientId): returns the attributes of the OAuth app with the given clientId.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>

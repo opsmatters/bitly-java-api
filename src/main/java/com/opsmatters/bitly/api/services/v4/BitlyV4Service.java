@@ -62,6 +62,7 @@ import com.opsmatters.bitly.api.model.v4.GetMetricsByDestinationResponse;
 import com.opsmatters.bitly.api.model.v4.GetUserResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateUserResponse;
 import com.opsmatters.bitly.api.model.v4.ListBsdsResponse;
+import com.opsmatters.bitly.api.model.v4.GetOAuthAppResponse;
 
 /**
  * Provides the types of objects to be used with v4 API calls.  
@@ -108,6 +109,7 @@ public class BitlyV4Service extends BitlyService
     protected static final Type GET_USER = new TypeToken<GetUserResponse>(){}.getType();
     protected static final Type UPDATE_USER = new TypeToken<UpdateUserResponse>(){}.getType();
     protected static final Type LIST_BSDS = new TypeToken<ListBsdsResponse>(){}.getType();
+    protected static final Type GET_OAUTH_APP = new TypeToken<GetOAuthAppResponse>(){}.getType();
 
     /**
      * Constructor that takes a http context and API client.
