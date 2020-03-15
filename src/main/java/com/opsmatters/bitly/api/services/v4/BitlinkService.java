@@ -43,14 +43,14 @@ import com.opsmatters.bitly.api.model.v4.GetBitlinkQrCodeResponse;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class BitlinksService extends BitlyV4Service
+public class BitlinkService extends BitlyV4Service
 {
     /**
      * Constructor that takes a http context and API client.
      * @param accessToken The access token used to authenticate the operations
      * @param httpContext The set of HTTP operations
      */
-    public BitlinksService(String accessToken, HttpContext httpContext)
+    public BitlinkService(String accessToken, HttpContext httpContext)
     {
         super(accessToken, httpContext);
     }

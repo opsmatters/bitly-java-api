@@ -39,18 +39,18 @@ import com.opsmatters.bitly.api.model.v4.GetMetricsByCountriesResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringNetworksResponse;
 
 /**
- * The set of operations used for bitlink groups.
+ * The set of operations used for bitly groups.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class GroupsService extends BitlyV4Service
+public class GroupService extends BitlyV4Service
 {
     /**
      * Constructor that takes a http context and API client.
      * @param accessToken The access token used to authenticate the operations
      * @param httpContext The set of HTTP operations
      */
-    public GroupsService(String accessToken, HttpContext httpContext)
+    public GroupService(String accessToken, HttpContext httpContext)
     {
         super(accessToken, httpContext);
     }

@@ -39,6 +39,12 @@ The following Bitly APIs are currently supported:
 - [x] [Get Click Metrics for a Group by Countries (`GET /v4/groups/{group_guid}/countries`)](https://dev.bitly.com/v4/#operation/getGroupMetricsByCountries)
 - [x] [Get Click Metrics for a Group by Referring Networks (`GET /v4/groups/{group_guid}/referring_networks`)](https://dev.bitly.com/v4/#operation/GetGroupMetricsByReferringNetworks)
 
+### Organizations
+
+- [x] [Retrieve Organizations (`GET /v4/organizations`)](https://dev.bitly.com/v4/#operation/getOrganizations)
+- [x] [Retrieve Organization (`GET /v4/organizations/{organization_guid}`)](https://dev.bitly.com/v4/#operation/getOrganization)
+- [x] [Retrieve Organization Shorten Counts (`GET /v4/organizations/{organization_guid}/shorten_counts`)](https://dev.bitly.com/v4/#operation/getOrganizationShortenCounts)
+
 ## Examples
 
 A detailed set of examples of the usage of each of the APIs can be found on [the API site](src/main/java/com/opsmatters/bitly/api).

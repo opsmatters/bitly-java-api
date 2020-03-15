@@ -45,6 +45,8 @@ import com.opsmatters.bitly.api.model.v4.GetGroupTagsResponse;
 import com.opsmatters.bitly.api.model.v4.GetShortenCountsResponse;
 import com.opsmatters.bitly.api.model.v4.GetGroupPreferencesResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateGroupPreferencesResponse;
+import com.opsmatters.bitly.api.model.v4.GetOrganizationResponse;
+import com.opsmatters.bitly.api.model.v4.ListOrganizationsResponse;
 
 /**
  * Provides the types of objects to be used with v4 API calls.  
@@ -74,6 +76,8 @@ public class BitlyV4Service extends BitlyService
     protected static final Type GET_SHORTEN_COUNTS = new TypeToken<GetShortenCountsResponse>(){}.getType();
     protected static final Type GET_GROUP_PREFERENCES = new TypeToken<GetGroupPreferencesResponse>(){}.getType();
     protected static final Type UPDATE_GROUP_PREFERENCES = new TypeToken<UpdateGroupPreferencesResponse>(){}.getType();
+    protected static final Type GET_ORGANIZATION = new TypeToken<GetOrganizationResponse>(){}.getType();
+    protected static final Type LIST_ORGANIZATIONS = new TypeToken<ListOrganizationsResponse>(){}.getType();
 
     /**
      * Constructor that takes a http context and API client.

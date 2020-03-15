@@ -21,29 +21,33 @@ import java.util.Map;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Represents the attributes of a group.
+ * Represents the attributes of an organization.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class Group
+public class Organization
 {
     private String guid;
     private String name;
     private List<String> bsds;
     private String created;
     private String modified;
+    private String tier;
     private String role;
     private Map<String,String> references;
 
     @SerializedName("is_active")
     private boolean isActive;
 
-    @SerializedName("organization_guid")
-    private String organizationGuid;
+    @SerializedName("tier_display_name")
+    private String tierDisplayName;
+
+    @SerializedName("tier_family")
+    private String tierFamily;
 
     /**
-     * Returns the GUID of the group.
-     * @return The GUID of the group
+     * Returns the GUID of the organization.
+     * @return The GUID of the organization
      */
     public String getGuid()
     {
@@ -51,8 +55,8 @@ public class Group
     }
 
     /**
-     * Returns the name of the group.
-     * @return The name of the group
+     * Returns the name of the organization.
+     * @return The name of the organization
      */
     public String getName()
     {
@@ -69,8 +73,8 @@ public class Group
     }
 
     /**
-     * Returns the created date for the group.
-     * @return The created date for the group
+     * Returns the created date for the organization.
+     * @return The created date for the organization
      */
     public String getCreated()
     {
@@ -78,8 +82,8 @@ public class Group
     }
 
     /**
-     * Returns the modified date for the group.
-     * @return The modified date for the group
+     * Returns the modified date for the organization.
+     * @return The modified date for the organization
      */
     public String getModified()
     {
@@ -87,8 +91,8 @@ public class Group
     }
 
     /**
-     * Returns <CODE>true</CODE> if the group is active.
-     * @return <CODE>true</CODE> if the group is active
+     * Returns <CODE>true</CODE> if the organization is active.
+     * @return <CODE>true</CODE> if the organization is active
      */
     public boolean isActive()
     {
@@ -96,17 +100,35 @@ public class Group
     }
 
     /**
-     * Returns the organization GUID of the group.
-     * @return The organization GUID of the group
+     * Returns the tier display name for the organization.
+     * @return The tier display name for the organization
      */
-    public String getOrganizationGuid()
+    public String getTierDisplayName()
     {
-        return organizationGuid;
+        return tierDisplayName;
     }
 
     /**
-     * Returns the role of the group.
-     * @return The role of the group
+     * Returns the tier family for the organization.
+     * @return The tier family for the organization
+     */
+    public String getTierFamily()
+    {
+        return tierFamily;
+    }
+
+    /**
+     * Returns the tier for the organization.
+     * @return The tier for the organization
+     */
+    public String getTier()
+    {
+        return tier;
+    }
+
+    /**
+     * Returns the role of the organization.
+     * @return The role of the organization
      */
     public String getRole()
     {
@@ -114,8 +136,8 @@ public class Group
     }
 
     /**
-     * Returns the references for the group.
-     * @return The references for the group
+     * Returns the references for the organization.
+     * @return The references for the organization
      */
     public Map<String,String> getReferences()
     {
@@ -128,7 +150,7 @@ public class Group
     @Override
     public String toString()
     {
-        return "Group ["
+        return "Organization ["
             +"guid="+guid
             +", name="+name
             +", bsds="+bsds
@@ -136,7 +158,9 @@ public class Group
             +", created="+created
             +", modified="+modified
             +", isActive="+isActive
-            +", organizationGuid="+organizationGuid
+            +", tierDisplayName="+tierDisplayName
+            +", tierFamily="+tierFamily
+            +", tier="+tier
             +", references="+references
             +"]";
     }

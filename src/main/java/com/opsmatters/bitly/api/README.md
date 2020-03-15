@@ -52,4 +52,10 @@ Other operations have also been included for bitlinks:
 * getMetricsByCountries(group, query): returns the metrics for the given group and query parameters.
 * getMetricsByReferringNetworks(group): returns the metrics for the given group.
 
+### Organizations
+
+* get(organizationGuid): returns the attributes of the given organization.
+* list(): returns the list of organizations.
+* getShortenCounts(organizationGuid, query): returns the counts of shortened links for the given organization.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>

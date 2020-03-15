@@ -25,7 +25,7 @@ import com.google.gson.annotations.SerializedName;
  * 
  * @author Gerald Curley (opsmatters)
  */
-public abstract class Bitlink
+public class Bitlink
 {
     private String id;
     private String link;
