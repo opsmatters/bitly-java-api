@@ -66,6 +66,11 @@ The following Bitly APIs are currently supported:
 - [x] **PREMIUM** [Update Channel (`PATCH /v4/channels/{channel_guid}`)](https://dev.bitly.com/v4/#operation/updateChannel)
 - [x] **PREMIUM** [Retrieve Channels (`GET /v4/channels`)](https://dev.bitly.com/v4/#operation/getChannels)
 
+### Users
+
+- [x] [Retrieve User (`GET /v4/user`)](https://dev.bitly.com/v4/#operation/getUser)
+- [x] [Update User (`PATCH /v4/user`)](https://dev.bitly.com/v4/#operation/updateUser)
+
 ## Examples
 
 A detailed set of examples of the usage of each of the APIs can be found on [the API site](src/main/java/com/opsmatters/bitly/api).

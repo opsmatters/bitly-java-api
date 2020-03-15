@@ -59,6 +59,8 @@ import com.opsmatters.bitly.api.model.v4.GetMetricsByReferrersByDomainResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringDomainsResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByReferringNetworksResponse;
 import com.opsmatters.bitly.api.model.v4.GetMetricsByDestinationResponse;
+import com.opsmatters.bitly.api.model.v4.GetUserResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateUserResponse;
 
 /**
  * Provides the types of objects to be used with v4 API calls.  
@@ -102,6 +104,8 @@ public class BitlyV4Service extends BitlyService
     protected static final Type GET_METRICS_BY_REFERRING_DOMAINS = new TypeToken<GetMetricsByReferringDomainsResponse>(){}.getType();
     protected static final Type GET_METRICS_BY_REFERRING_NETWORKS = new TypeToken<GetMetricsByReferringNetworksResponse>(){}.getType();
     protected static final Type GET_METRICS_BY_DESTINATION = new TypeToken<GetMetricsByDestinationResponse>(){}.getType();
+    protected static final Type GET_USER = new TypeToken<GetUserResponse>(){}.getType();
+    protected static final Type UPDATE_USER = new TypeToken<UpdateUserResponse>(){}.getType();
 
     /**
      * Constructor that takes a http context and API client.

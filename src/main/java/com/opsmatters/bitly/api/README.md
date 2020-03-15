@@ -80,4 +80,9 @@ Other operations have also been included for bitlinks:
 * update(channelGuid, object): updates the attributes of the given campaign channel.
 * list(groupGuid, campaignGuid): returns the list of campaign channels for the given group and campaign.
 
+### Users
+
+* get(): returns the attributes of the current authenticated user.
+* update(object): updates the attributes of the current authenticated user.
+
 <sub>Copyright (c) 2020 OpsMatters</sub>

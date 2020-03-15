@@ -24,6 +24,7 @@ import com.opsmatters.bitly.api.services.v4.GroupService;
 import com.opsmatters.bitly.api.services.v4.OrganizationService;
 import com.opsmatters.bitly.api.services.v4.CampaignService;
 import com.opsmatters.bitly.api.services.v4.CampaignChannelService;
+import com.opsmatters.bitly.api.services.v4.UserService;
 
 /**
  * Client used to invoke Bitly operations using the v4 REST API.
@@ -102,5 +103,14 @@ public class Bitly
     public CampaignChannelService channels()
     {
         return new CampaignChannelService(accessToken, httpContext);
+    }
+
+    /**
+     * Returns the user service.
+     * @return The user service
+     */
+    public UserService users()
+    {
+        return new UserService(accessToken, httpContext);
     }
 }
