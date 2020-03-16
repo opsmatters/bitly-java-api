@@ -71,6 +71,14 @@ The following Bitly APIs are currently supported:
 - [x] [Retrieve User (`GET /v4/user`)](https://dev.bitly.com/v4/#operation/getUser)
 - [x] [Update User (`PATCH /v4/user`)](https://dev.bitly.com/v4/#operation/updateUser)
 
+### Webhooks
+
+- [x] **PREMIUM** [Retrieve a Webhook (`GET /v4/webhooks/{webhook_guid}`)](https://dev.bitly.com/v4/#operation/getWebhook)
+- [x] **PREMIUM** [Create a Webhook (`POST /v4/webhooks`)](https://dev.bitly.com/v4/#operation/createWebhook)
+- [x] **PREMIUM** [Update a Webhook (`PATCH /v4/webhooks/{webhook_guid}`)](https://dev.bitly.com/v4/#operation/updateWebhook)
+- [x] **PREMIUM** [Fetch all Webhooks for an Organization (`GET /v4/organizations/{organization_guid}/webhooks`)](https://dev.bitly.com/v4/#operation/getWebhooks)
+- [x] **PREMIUM** [Delete a Webhook (`DELETE /v4/webhooks/{webhook_guid}`)](https://dev.bitly.com/v4/#operation/deleteWebhook)
+
 ### BSDs (Branded Short Domains)
 
 - [x] [Retrieve BSDs (`GET /v4/bsds`)](https://dev.bitly.com/v4/#operation/getBSDs)
@@ -123,7 +131,7 @@ Add the following dependency to include the artefact within your project:
 <dependency>
   <groupId>com.opsmatters</groupId>
   <artifactId>bitly-java-api</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 

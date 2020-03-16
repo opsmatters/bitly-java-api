@@ -16,41 +16,28 @@
 
 package com.opsmatters.bitly.api.model.v4;
 
-import java.util.List;
-
 /**
- * Represents a response to get a list of groups.
+ * Represents a response to get a webhook.
  * 
  * @author Gerald Curley (opsmatters)
  */
-public class ListGroupsResponse
+public class GetWebhookResponse extends Webhook
 {
-    private List<Group> groups;
-
     /**
      * Default constructor.
      */
-    public ListGroupsResponse()
+    public GetWebhookResponse()
     {
     }
-
-    /**
-     * Returns the list of groups.
-     * @return The list of groups
-     */
-    public List<Group> getGroups()
-    {
-        return groups;
-    }
-
+    
     /**
      * Returns a string representation of the object.
      */
     @Override
     public String toString()
     {
-        return "ListGroupsResponse ["
-            +"groups="+groups
+        return "GetWebhookResponse ["
+            +super.toString()
             +"]";
     }
 }

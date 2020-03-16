@@ -62,6 +62,10 @@ import com.opsmatters.bitly.api.model.v4.GetMetricsByDestinationResponse;
 import com.opsmatters.bitly.api.model.v4.GetUserResponse;
 import com.opsmatters.bitly.api.model.v4.UpdateUserResponse;
 import com.opsmatters.bitly.api.model.v4.ListBsdsResponse;
+import com.opsmatters.bitly.api.model.v4.GetWebhookResponse;
+import com.opsmatters.bitly.api.model.v4.CreateWebhookResponse;
+import com.opsmatters.bitly.api.model.v4.UpdateWebhookResponse;
+import com.opsmatters.bitly.api.model.v4.ListWebhooksResponse;
 import com.opsmatters.bitly.api.model.v4.GetOAuthAppResponse;
 
 /**
@@ -109,6 +113,10 @@ public class BitlyV4Service extends BitlyService
     protected static final Type GET_USER = new TypeToken<GetUserResponse>(){}.getType();
     protected static final Type UPDATE_USER = new TypeToken<UpdateUserResponse>(){}.getType();
     protected static final Type LIST_BSDS = new TypeToken<ListBsdsResponse>(){}.getType();
+    protected static final Type GET_WEBHOOK = new TypeToken<GetWebhookResponse>(){}.getType();
+    protected static final Type CREATE_WEBHOOK = new TypeToken<CreateWebhookResponse>(){}.getType();
+    protected static final Type UPDATE_WEBHOOK = new TypeToken<UpdateWebhookResponse>(){}.getType();
+    protected static final Type LIST_WEBHOOKS = new TypeToken<ListWebhooksResponse>(){}.getType();
     protected static final Type GET_OAUTH_APP = new TypeToken<GetOAuthAppResponse>(){}.getType();
 
     /**

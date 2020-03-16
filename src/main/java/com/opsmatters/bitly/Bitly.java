@@ -26,6 +26,7 @@ import com.opsmatters.bitly.api.services.v4.CampaignService;
 import com.opsmatters.bitly.api.services.v4.CampaignChannelService;
 import com.opsmatters.bitly.api.services.v4.UserService;
 import com.opsmatters.bitly.api.services.v4.BsdService;
+import com.opsmatters.bitly.api.services.v4.WebhookService;
 import com.opsmatters.bitly.api.services.v4.AppService;
 
 /**
@@ -123,6 +124,15 @@ public class Bitly
     public BsdService bsds()
     {
         return new BsdService(accessToken, httpContext);
+    }
+
+    /**
+     * Returns the webhook service.
+     * @return The webhook service
+     */
+    public WebhookService webhooks()
+    {
+        return new WebhookService(accessToken, httpContext);
     }
 
     /**

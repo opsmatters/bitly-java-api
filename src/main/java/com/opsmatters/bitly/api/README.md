@@ -85,6 +85,14 @@ Other operations have also been included for bitlinks:
 * get(): returns the attributes of the current authenticated user.
 * update(object): updates the attributes of the current authenticated user.
 
+### Webhooks
+
+* get(webhookGuid): returns the attributes of the given webhook.
+* create(object): creates a new webhook.
+* update(webhookGuid, object): updates the attributes of the given webhook.
+* list(organizationGuid): returns the list of webhooks for the given organization.
+* delete(webhookGuid): deletes the given webhook.
+
 ### Branded Short Domains (BSDs)
 
 * list(): returns the list of BSDs.

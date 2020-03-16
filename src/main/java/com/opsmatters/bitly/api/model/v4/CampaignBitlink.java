@@ -40,6 +40,8 @@ public class CampaignBitlink
 
     /**
      * Constructor that takes a campaign GUID and bitlink id.
+     * @param campaignGuid The GUID of the campaign
+     * @param bitlinkId The id of the bitlink
      */
     public CampaignBitlink(String campaignGuid, String bitlinkId)
     {
