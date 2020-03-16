@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.opsmatters</groupId>
   <artifactId>bitly-java-api</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.3-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>Bitly Java API</name>
   <description>
@@ -27,7 +27,7 @@
     <url>https://github.com/opsmatters/bitly-java-api</url>
     <connection>scm:git:https://github.com/opsmatters/bitly-java-api.git</connection>
     <developerConnection>scm:git:https://github.com/opsmatters/bitly-java-api.git</developerConnection>
-    <tag>bitly-java-api-1.0.2</tag>
+    <tag>bitly-java-api-1.0.0</tag>
   </scm>
 
   <developers>
