@@ -90,6 +90,18 @@ public class BitlinkService extends BitlyV4Service
     }
 
     /**
+     * Shortens the given long url using the given short domain name.
+     * @param longUrl The long url to be shortened
+     * @param domain The short domain to be used
+     * @return The response object
+     * @throws IOException if there is a communication error.
+     */
+    public Optional<CreateBitlinkResponse> shorten(String longUrl, String domain) throws IOException
+    {
+        return shorten(CreateBitlinkRequest.builder().longUrl(longUrl).domain(domain).build());
+    }
+
+    /**
      * Shortens the given long url.
      * @param request The request containing the long url to be shortened
      * @return The response object
