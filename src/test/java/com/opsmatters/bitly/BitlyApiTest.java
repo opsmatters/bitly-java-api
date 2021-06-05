@@ -68,6 +68,7 @@ public class BitlyApiTest
 
         // Initialise the clients
         logger.info("Initialise the client");
+        Assert.assertNotNull(accessToken);
         Bitly client = new Bitly(accessToken);
         Assert.assertNotNull(client);
 
